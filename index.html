@@ -112,28 +112,29 @@ transition:0.3s;
 
 .btn:hover{transform:scale(1.05);}
 
-/* SLIDER 8x5 */
+/* SLIDER 8x5 FIXED */
 .slider{
 flex:1;
 max-width:1060px;
-height:534px;
+aspect-ratio:8/5;
 overflow:hidden;
 border-radius:25px;
 box-shadow:0 0 40px rgba(255,215,0,0.6);
+position:relative;
 }
 
 .slides{
 display:flex;
-width:300%;
 height:100%;
-transition:transform 1s ease-in-out;
+transition:transform 0.8s cubic-bezier(.77,0,.18,1);
 }
 
 .slides img{
-width:100%;
+flex:0 0 100%;
 height:100%;
 object-fit:cover;
 }
+
 
 /* SERVICES */
 .grid{
@@ -457,15 +458,23 @@ Tell me about your project and how many images you have. I’ll reply with a cle
 </footer>
 
 <script>
-let index=0;
-const slides=document.getElementById("slides");
-const total=3;
-setInterval(()=>{
-index=(index+1)%total;
-slides.style.transform=`translateX(-${index*100}%)`;
-},4000);
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+let currentIndex = 0;
+
+function moveSlide() {
+    currentIndex++;
+    if (currentIndex >= totalSlides) {
+        currentIndex = 0;
+    }
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+setInterval(moveSlide, 4000);
 </script>
+
 
 </body>
 </html>
+
 
