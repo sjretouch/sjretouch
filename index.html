@@ -420,20 +420,159 @@ Working hours: usually reply within a few working hours.
 <a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-insta"><i class="fab fa-instagram"></i></a>
 <a href="#contact" class="float-quote"><i class="fas fa-paper-plane"></i></a>
 
-<footer>
-<div class="footer-left">
-<img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true">
-<p>Professional retouching service helping photographers elevate their work with natural, high-end results.</p>
-</div>
+<footer class="footer">
+    <div class="footer-container">
 
-<div class="footer-right">
-<h4>Contact</h4>
-<p><i class="fas fa-envelope"></i> sj.retoucher@gmail.com</p>
-<p><i class="fab fa-instagram"></i> @sj.retoucher</p>
-</div>
+        <div class="footer-left">
+            <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true" class="footer-logo">
+            <p class="footer-about">
+                SJ Photo is a high-end professional retouching studio serving photographers worldwide.
+                Every image is carefully enhanced with precision, natural skin tones, and luxury-level detail.
+                Quality, consistency, and fast communication are our commitment.
+            </p>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-right">
+            <p><i class="fas fa-envelope"></i> sj.retoucher@gmail.com</p>
+            <p><i class="fab fa-instagram"></i> @sj.retoucher</p>
+            <p><i class="fas fa-clock"></i> We usually reply within 1 hour during working time.</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 SJ Photo. All rights reserved.
+    </div>
 </footer>
 
+
 <script>
+  /* ===== PREMIUM FOOTER ===== */
+
+.footer{
+background:
+linear-gradient(to top, #000 60%, rgba(255,215,0,0.05));
+padding:120px 8% 40px;
+border-top:1px solid rgba(255,215,0,.2);
+position:relative;
+}
+
+.footer-container{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:80px;
+max-width:1100px;
+margin:auto;
+flex-wrap:wrap;
+}
+
+.footer-left,
+.footer-right{
+flex:1;
+text-align:center;
+}
+
+.footer-logo{
+width:160px;
+margin-bottom:25px;
+filter:drop-shadow(0 0 15px rgba(255,215,0,.6));
+transition:.4s;
+}
+
+.footer-logo:hover{
+transform:scale(1.05);
+filter:drop-shadow(0 0 25px rgba(255,215,0,1));
+}
+
+.footer-about{
+opacity:.8;
+font-size:15px;
+line-height:1.8;
+max-width:420px;
+margin:auto;
+}
+
+.footer-right p{
+margin-bottom:18px;
+font-size:15px;
+transition:.3s;
+}
+
+.footer-right p:hover{
+color:#ffd700;
+transform:translateY(-2px);
+}
+
+.footer-right i{
+color:#ffd700;
+margin-right:10px;
+font-size:18px;
+}
+
+/* GOLD ANIMATED DIVIDER */
+.footer-divider{
+width:2px;
+height:180px;
+background:linear-gradient(to bottom,
+transparent,
+#ffd700,
+#fff,
+#ffd700,
+transparent);
+position:relative;
+overflow:hidden;
+}
+
+.footer-divider::after{
+content:"";
+position:absolute;
+top:-100%;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, transparent, rgba(255,255,255,.9), transparent);
+animation:shine 3s infinite;
+}
+
+@keyframes shine{
+0%{top:-100%;}
+100%{top:100%;}
+}
+
+/* BOTTOM COPYRIGHT */
+.footer-bottom{
+margin-top:60px;
+text-align:center;
+font-size:13px;
+opacity:.5;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.footer-container{
+flex-direction:column;
+gap:40px;
+}
+
+.footer-divider{
+width:60%;
+height:2px;
+background:linear-gradient(to right,
+transparent,
+#ffd700,
+#fff,
+#ffd700,
+transparent);
+}
+
+.footer-divider::after{
+animation:none;
+}
+}
+
 const slides=document.getElementById("slides");
 const dotsContainer=document.getElementById("dots");
 let index=0;
@@ -470,4 +609,5 @@ startAuto();
 
 </body>
 </html>
+
 
