@@ -185,12 +185,58 @@ border-radius:20px;
 }
 
 /* FAQ */
-.faq-item{
-background:rgba(255,255,255,.05);
-padding:20px;
-margin-bottom:20px;
-border-radius:15px;
+.faq-section{
+  padding:80px 10%;
 }
+
+.faq-container{
+  max-width:900px;
+  margin:auto;
+}
+
+.faq-item{
+  background:rgba(255,255,255,0.05);
+  margin-bottom:15px;
+  border-radius:12px;
+  padding:20px;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,215,0,0.1);
+  transition:.3s;
+}
+
+.faq-item.active{
+  border-color:#ffd700;
+  box-shadow:0 0 15px rgba(255,215,0,.2);
+}
+
+.faq-question{
+  font-weight:600;
+  cursor:pointer;
+  position:relative;
+}
+
+.faq-question::after{
+  content:"+";
+  position:absolute;
+  right:0;
+  font-size:20px;
+  transition:.3s;
+}
+
+.faq-item.active .faq-question::after{
+  content:"−";
+}
+
+.faq-answer{
+  display:none;
+  margin-top:15px;
+  opacity:.8;
+}
+
+.faq-item.active .faq-answer{
+  display:block;
+}
+
 
 /* CONTACT */
 form{
@@ -688,19 +734,32 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 <script>
 <script>
-document.querySelectorAll(".quote-btn").forEach(button => {
-  button.addEventListener("click", function() {
-    const type = this.getAttribute("data-type");
-    const select = document.querySelector('select[name="photo_type"]');
+document.addEventListener("DOMContentLoaded", function(){
 
-    if(select){
-      select.value = type;
-    }
+  const questions = document.querySelectorAll(".faq-question");
+
+  questions.forEach(question => {
+    question.addEventListener("click", function(){
+
+      const item = this.parentElement;
+
+      document.querySelectorAll(".faq-item").forEach(i => {
+        if(i !== item){
+          i.classList.remove("active");
+        }
+      });
+
+      item.classList.toggle("active");
+
+    });
   });
+
 });
 </script>
+
 </body>
 </html>
+
 
 
 
