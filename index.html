@@ -3,163 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SJ Photo | Professional Retouching</title>
+<title>SJ Photo | High-End Retouching Studio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 html{scroll-behavior:smooth;}
-
 body{
 color:#fff;
-background:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920') no-repeat center center/cover;
-background-attachment:fixed;
+background:#000;
+overflow-x:hidden;
 }
 
+/* Background luxury */
 body::before{
 content:"";
 position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(8px);
+width:100%;height:100%;
+background:
+linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)),
+url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1920') center/cover;
 z-index:-1;
-}
-
-section{padding:110px 8%;}
-h2{
-text-align:center;
-font-size:40px;
-color:#ffd700;
-margin-bottom:60px;
-position:relative;
-}
-h2::after{
-content:"";
-width:80px;height:3px;
-background:#ffd700;
-display:block;
-margin:15px auto 0;
+filter:blur(4px);
 }
 
 /* HEADER */
 header{
 position:fixed;
-top:0;
-width:100%;
+top:0;width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:25px 8%;
-background:rgba(0,0,0,0.95);
+background:rgba(0,0,0,.9);
+backdrop-filter:blur(15px);
 z-index:1000;
+border-bottom:1px solid rgba(255,215,0,.3);
 }
-.logo{height:80px;cursor:pointer;}
+.logo{height:90px;}
 nav a{
-color:#fff;
-margin-left:35px;
-text-decoration:none;
-font-weight:500;
-transition:.3s;
+color:#fff;text-decoration:none;
+margin-left:35px;font-weight:500;
+position:relative;
 }
-nav a:hover{color:#ffd700;}
+nav a::after{
+content:"";position:absolute;
+left:0;bottom:-6px;
+width:0;height:2px;
+background:#ffd700;transition:.3s;
+}
+nav a:hover::after{width:100%;}
 
 /* HERO */
 .hero{
+min-height:100vh;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
+padding:160px 8% 100px;
 gap:60px;
-padding-top:170px;
-min-height:95vh;
 }
 .hero-text{flex:1;}
-.hero-text h1{font-size:52px;color:#ffd700;margin-bottom:20px;}
-.hero-text p{font-size:20px;margin-bottom:30px;opacity:.9;}
-
+.hero-text h1{
+font-size:60px;
+font-weight:800;
+background:linear-gradient(45deg,#ffd700,#fff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:20px;
+}
+.hero-text p{
+font-size:20px;
+opacity:.85;
+margin-bottom:35px;
+}
 .btn{
 display:inline-block;
-padding:16px 35px;
+padding:18px 40px;
+border-radius:40px;
 background:linear-gradient(45deg,#ffd700,#b8860b);
 color:#000;
-border-radius:30px;
 font-weight:600;
 text-decoration:none;
 transition:.3s;
 }
-.btn:hover{transform:scale(1.05);}
+.btn:hover{transform:translateY(-3px);}
 
-/* SLIDER PRO */
-.slider{
+/* BEFORE AFTER */
+.before-after{
 flex:1;
+position:relative;
 max-width:1060px;
 aspect-ratio:8/5;
+border-radius:30px;
 overflow:hidden;
-border-radius:25px;
-position:relative;
-box-shadow:0 0 60px rgba(255,215,0,.6);
+box-shadow:0 0 80px rgba(255,215,0,.5);
 }
-.slides{
-display:flex;
-height:100%;
-transition:transform .8s cubic-bezier(.77,0,.18,1);
-}
-.slides img{
-flex:0 0 100%;
-height:100%;
+.before-after img{
+position:absolute;
+width:100%;height:100%;
 object-fit:cover;
 }
-.slider-btn{
+.after-img{clip-path:inset(0 50% 0 0);}
+.slider-line{
 position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:rgba(0,0,0,.6);
-border:none;
-color:#ffd700;
-font-size:22px;
-padding:10px 14px;
-cursor:pointer;
-border-radius:50%;
-}
-.prev{left:15px;}
-.next{right:15px;}
-
-.dots{
-position:absolute;
-bottom:15px;
+top:0;bottom:0;
 left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:8px;
+width:3px;
+background:#ffd700;
+cursor:ew-resize;
 }
-.dot{
-width:10px;height:10px;
-border-radius:50%;
-background:#fff;
-opacity:.5;
-cursor:pointer;
+
+/* SECTION */
+section{padding:120px 8%;}
+h2{
+text-align:center;
+font-size:42px;
+margin-bottom:70px;
+color:#ffd700;
 }
-.dot.active{background:#ffd700;opacity:1;}
 
 /* SERVICES */
 .grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:40px;
 }
 .card{
 background:rgba(255,255,255,.05);
-border:1px solid rgba(255,215,0,.4);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,215,0,.3);
 border-radius:25px;
 overflow:hidden;
-transition:.3s;
-backdrop-filter:blur(10px);
+transition:.4s;
 }
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 35px rgba(255,215,0,.4);
+box-shadow:0 0 40px rgba(255,215,0,.5);
 }
 .card img{
 width:100%;
@@ -167,84 +149,72 @@ aspect-ratio:4/5;
 object-fit:cover;
 }
 .card-content{padding:25px;}
-.card h3{color:#ffd700;margin-bottom:8px;}
-.price{font-size:20px;margin-bottom:15px;}
+.card h3{color:#ffd700;margin-bottom:10px;}
+.price{margin-bottom:15px;}
 .card ul{list-style:none;font-size:14px;margin-bottom:20px;}
 .card ul li{margin-bottom:6px;}
 
-/* FEEDBACK */
-.feedback{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-}
-.feedback-item{
-background:rgba(255,255,255,.05);
-padding:25px;
-border-radius:20px;
+/* TESTIMONIAL */
+.testimonial{
+max-width:700px;margin:auto;
+text-align:center;
+font-size:18px;
+opacity:.9;
+min-height:100px;
 }
 
 /* FAQ */
 .faq-item{
 background:rgba(255,255,255,.05);
 padding:20px;
-margin-bottom:20px;
 border-radius:15px;
+margin-bottom:20px;
+cursor:pointer;
 }
+.faq-answer{display:none;margin-top:10px;opacity:.8;}
 
 /* CONTACT */
 form{
-max-width:600px;
-margin:auto;
-display:flex;
-flex-direction:column;
+max-width:600px;margin:auto;
+display:flex;flex-direction:column;
 gap:15px;
 }
 form input,form select,form textarea{
-padding:12px;
-border-radius:10px;
-border:none;
+padding:14px;border-radius:12px;border:none;
 }
 form button{
-padding:14px;
-border:none;
+padding:16px;border:none;
 border-radius:30px;
 background:linear-gradient(45deg,#ffd700,#b8860b);
-font-weight:600;
-cursor:pointer;
+font-weight:600;cursor:pointer;
 }
 
 /* FLOAT */
 .float-insta,.float-quote{
 position:fixed;
 right:20px;
-padding:15px;
+padding:18px;
 border-radius:50%;
-color:#fff;
 font-size:20px;
 z-index:1000;
 }
-.float-insta{bottom:90px;background:#E1306C;}
+.float-insta{bottom:90px;background:#E1306C;color:#fff;}
 .float-quote{bottom:20px;background:#ffd700;color:#000;}
 
 /* FOOTER */
 footer{
-background:rgba(0,0,0,.95);
+background:#000;
 padding:80px 8%;
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
-gap:50px;
+gap:40px;
+border-top:1px solid rgba(255,215,0,.3);
 }
-.footer-left img{width:140px;margin-bottom:20px;}
-.footer-left p{max-width:400px;line-height:1.6;opacity:.85;}
-.footer-right h4{color:#ffd700;margin-bottom:15px;}
-.footer-right p{margin-bottom:10px;}
+footer img{width:130px;margin-bottom:20px;}
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 .hero{flex-direction:column;text-align:center;}
-.grid{grid-template-columns:1fr;}
-.feedback{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -252,7 +222,7 @@ gap:50px;
 <body>
 
 <header>
-<img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true" class="logo">
 <nav>
 <a href="#">Home</a>
 <a href="#services">Services</a>
@@ -265,40 +235,32 @@ gap:50px;
 <section class="hero">
 <div class="hero-text">
 <h1>Welcome to SJphoto</h1>
-<p>We are the best choice to help you increase the attraction to your product.</p>
+<p>High-end professional retouching studio helping photographers elevate their images.</p>
 <a href="#contact" class="btn">Try Free Now</a>
 </div>
 
-<div class="slider" id="slider">
-<div class="slides" id="slides">
+<div class="before-after" id="ba">
 <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1400">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1400">
-<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400">
-<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400">
-<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400">
-</div>
-<button class="slider-btn prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
-<button class="slider-btn next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
-<div class="dots" id="dots"></div>
+<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1400&blur=30" class="after-img" id="after">
+<div class="slider-line" id="line"></div>
 </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
-<h2>Services</h2>
+<h2>Premium Services</h2>
 <div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800">
 <div class="card-content">
-<h3>Newborn & Basic</h3>
-<div class="price">$2 / image</div>
+<h3>High-End Retouch</h3>
+<div class="price">$7 / image</div>
 <ul>
-<li>Background Removal</li>
-<li>Eyes and face retouching</li>
-<li>Skin smoothing & blemish removal</li>
-<li>Lighting & brightness adjustment</li>
-<li>Match your retouching style</li>
+<li>Dodge & Burn</li>
+<li>Digital makeup</li>
+<li>Skin perfection</li>
+<li>Body reshaping</li>
+<li>Luxury finish</li>
 </ul>
 <a href="#contact" class="btn">Get Quote</a>
 </div>
@@ -310,59 +272,10 @@ gap:50px;
 <h3>Portrait</h3>
 <div class="price">$4 / image</div>
 <ul>
-<li>Skin retouching</li>
-<li>Body liquefy</li>
-<li>Hair retouching</li>
-<li>Objects removal</li>
-<li>Following Clients’ Style</li>
-</ul>
-<a href="#contact" class="btn">Get Quote</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800">
-<div class="card-content">
-<h3>Maternity</h3>
-<div class="price">$4 / image</div>
-<ul>
-<li>Face beauty retouch</li>
-<li>Skin tone smoothing</li>
-<li>Teeth whitening</li>
-<li>Wrinkle removal</li>
-<li>Hair retouching</li>
-</ul>
-<a href="#contact" class="btn">Get Quote</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800">
-<div class="card-content">
-<h3>Model</h3>
-<div class="price">$4 / image</div>
-<ul>
-<li>Skin softening</li>
-<li>Body slimming</li>
-<li>Color correction</li>
-<li>Background retouching</li>
-<li>Sharpness enhancement</li>
-</ul>
-<a href="#contact" class="btn">Get Quote</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
-<div class="card-content">
-<h3>High-End</h3>
-<div class="price">$7 / image</div>
-<ul>
-<li>Dodge & Burn</li>
-<li>Digital airbrushing</li>
-<li>Digital makeup</li>
-<li>Light & exposure levels</li>
-<li>Blemishes removal</li>
+<li>Skin retouch</li>
+<li>Hair fix</li>
+<li>Color grading</li>
+<li>Background enhance</li>
 </ul>
 <a href="#contact" class="btn">Get Quote</a>
 </div>
@@ -371,47 +284,38 @@ gap:50px;
 </div>
 </section>
 
-<!-- FEEDBACK -->
 <section>
 <h2>Client Feedback</h2>
-<div class="feedback">
-<div class="feedback-item">🇺🇸 Sarah M. – “Outstanding quality and natural finish!”</div>
-<div class="feedback-item">🇺🇸 David R. – “Fast turnaround and consistent results.”</div>
-<div class="feedback-item">🇺🇸 Jessica L. – “My trusted retoucher for all sessions.”</div>
+<div class="testimonial" id="testimonial">
+“Outstanding quality and fast delivery.” – Sarah M.
 </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
 <h2>FAQs</h2>
-<div class="faq-item"><strong>Delivery time?</strong><br>24–48 hours depending on volume.</div>
-<div class="faq-item"><strong>Bulk discount?</strong><br>Yes, contact for custom pricing.</div>
-<div class="faq-item"><strong>Match my style?</strong><br>Absolutely.</div>
-<div class="faq-item"><strong>International clients?</strong><br>Yes, worldwide.</div>
-<div class="faq-item"><strong>Revisions?</strong><br>Minor revisions included.</div>
-<div class="faq-item"><strong>Payment methods?</strong><br>PayPal & bank transfer.</div>
+
+<div class="faq-item">
+<strong>How fast is delivery?</strong>
+<div class="faq-answer">24–48 hours depending on volume.</div>
+</div>
+
+<div class="faq-item">
+<strong>Do you match my style?</strong>
+<div class="faq-answer">Yes, we always follow client style references.</div>
+</div>
+
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2>Send Your Images & Get a Quote</h2>
-<p style="text-align:center;margin-bottom:25px;">
-Tell me about your project and how many images you have. I’ll reply with a clear quote and turnaround time.<br>
-Working hours: usually reply within a few working hours.
-</p>
-
 <form action="https://formspree.io/f/xbdagqon" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email / Contact" required>
+<input type="email" name="email" placeholder="Your Email" required>
 <select name="photo_type">
-<option>Select Photo Type</option>
-<option>Newborn</option>
+<option>Photo Type</option>
 <option>Portrait</option>
-<option>Maternity</option>
-<option>Model</option>
 <option>High-End</option>
 </select>
-<input type="text" name="image_link" placeholder="Image Link (Drive, Dropbox...)">
 <textarea name="details" rows="5" placeholder="Project Details"></textarea>
 <button type="submit">Send Request</button>
 </form>
@@ -421,53 +325,50 @@ Working hours: usually reply within a few working hours.
 <a href="#contact" class="float-quote"><i class="fas fa-paper-plane"></i></a>
 
 <footer>
-<div class="footer-left">
+<div>
 <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true">
-<p>Professional retouching service helping photographers elevate their work with natural, high-end results.</p>
+<p>High-end retouching studio for photographers worldwide.</p>
 </div>
-
-<div class="footer-right">
-<h4>Contact</h4>
+<div>
 <p><i class="fas fa-envelope"></i> sj.retoucher@gmail.com</p>
 <p><i class="fab fa-instagram"></i> @sj.retoucher</p>
 </div>
 </footer>
 
 <script>
-const slides=document.getElementById("slides");
-const dotsContainer=document.getElementById("dots");
-let index=0;
-const total=slides.children.length;
-let interval;
+/* Before After Drag */
+const ba=document.getElementById('ba');
+const after=document.getElementById('after');
+const line=document.getElementById('line');
 
-function updateSlider(){
-slides.style.transform=`translateX(-${index*100}%)`;
-document.querySelectorAll('.dot').forEach((dot,i)=>{
-dot.classList.toggle('active',i===index);
+ba.addEventListener('mousemove',(e)=>{
+const rect=ba.getBoundingClientRect();
+let x=e.clientX-rect.left;
+let percent=(x/rect.width)*100;
+after.style.clipPath=`inset(0 ${100-percent}% 0 0)`;
+line.style.left=percent+"%";
 });
-}
-function nextSlide(){index=(index+1)%total;updateSlider();}
-function prevSlide(){index=(index-1+total)%total;updateSlider();}
 
-function createDots(){
-for(let i=0;i<total;i++){
-const dot=document.createElement("div");
-dot.classList.add("dot");
-if(i===0) dot.classList.add("active");
-dot.addEventListener("click",()=>{index=i;updateSlider();});
-dotsContainer.appendChild(dot);
-}
-}
-function startAuto(){interval=setInterval(nextSlide,4000);}
-function stopAuto(){clearInterval(interval);}
+/* FAQ toggle */
+document.querySelectorAll('.faq-item').forEach(item=>{
+item.addEventListener('click',()=>{
+let ans=item.querySelector('.faq-answer');
+ans.style.display=ans.style.display==='block'?'none':'block';
+});
+});
 
-document.getElementById("slider").addEventListener("mouseenter",stopAuto);
-document.getElementById("slider").addEventListener("mouseleave",startAuto);
-
-createDots();
-startAuto();
+/* Testimonial auto */
+const texts=[
+"“Outstanding quality and fast delivery.” – Sarah M.",
+"“My go-to retoucher for all sessions.” – David R.",
+"“Luxury finish and consistent results.” – Jessica L."
+];
+let tIndex=0;
+setInterval(()=>{
+tIndex=(tIndex+1)%texts.length;
+document.getElementById("testimonial").innerText=texts[tIndex];
+},4000);
 </script>
 
 </body>
 </html>
-
