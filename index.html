@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SJ Photo | High-End Retouching</title>
+<title>SJ Photo | High-End Retouching Studio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -23,13 +23,13 @@ body{
     background:#000;
 }
 
-/* BACKGROUND IMAGE */
+/* ===== BACKGROUND IMAGE ===== */
 .bg-image{
     position:fixed;
     width:100%;
     height:100%;
-    background:url('https://images.pexels.com/photos/2693208/pexels-photo-2693208.jpeg?auto=compress&w=1600') center/cover no-repeat;
-    filter:blur(8px) brightness(0.4);
+    background:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&w=1920') center/cover no-repeat;
+    filter:blur(10px) brightness(0.35);
     z-index:-2;
 }
 
@@ -38,15 +38,15 @@ body::before{
     position:fixed;
     width:100%;
     height:100%;
-    background:linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.9));
+    background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.95));
     z-index:-1;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
     position:fixed;
     width:100%;
-    padding:20px 8%;
+    padding:18px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -55,9 +55,8 @@ header{
     z-index:1000;
 }
 
-header h2{
-    color:#d4af37;
-    font-weight:600;
+.logo img{
+    height:55px;
 }
 
 nav ul{
@@ -77,12 +76,12 @@ nav a:hover{
     color:#d4af37;
 }
 
-/* SECTION */
+/* ===== SECTIONS ===== */
 section{
-    padding:120px 8% 80px 8%;
+    padding:120px 8% 80px;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
     display:flex;
     align-items:center;
@@ -126,7 +125,7 @@ section{
     box-shadow:0 0 30px rgba(212,175,55,0.8);
 }
 
-/* SLIDER */
+/* ===== HERO SLIDER ===== */
 .slider{
     flex:1;
     max-width:550px;
@@ -155,7 +154,7 @@ section{
     100%{transform:translateX(0);}
 }
 
-/* SERVICES */
+/* ===== SERVICES ===== */
 .services h2{
     text-align:center;
     margin-bottom:50px;
@@ -204,7 +203,8 @@ section{
 .card ul{
     font-size:14px;
     color:#ddd;
-    padding-left:15px;
+    padding-left:18px;
+    margin-bottom:15px;
 }
 
 .highlight{
@@ -213,28 +213,7 @@ section{
     transform:scale(1.05);
 }
 
-/* FEEDBACK */
-.feedback{
-    text-align:center;
-}
-
-.feedback h2{
-    color:#d4af37;
-    margin-bottom:40px;
-}
-
-.feedback-item{
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-    border-left:4px solid #d4af37;
-    padding:25px;
-    margin:20px auto;
-    width:70%;
-    border-radius:12px;
-    font-style:italic;
-}
-
-/* CONTACT */
+/* ===== CONTACT ===== */
 .contact h2{
     text-align:center;
     color:#d4af37;
@@ -269,7 +248,39 @@ input:focus, textarea:focus, select:focus{
     outline:2px solid #d4af37;
 }
 
-/* FLOATING BUTTONS */
+/* ===== FOOTER ===== */
+footer{
+    background:rgba(0,0,0,0.95);
+    padding:60px 8%;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    border-top:1px solid rgba(212,175,55,0.3);
+}
+
+.footer-left{
+    max-width:400px;
+}
+
+.footer-left img{
+    height:70px;
+    margin-bottom:15px;
+}
+
+.footer-left p{
+    color:#ccc;
+    line-height:1.6;
+}
+
+.footer-right p{
+    margin-bottom:10px;
+}
+
+.footer-right span{
+    color:#d4af37;
+}
+
+/* ===== FLOAT BUTTONS ===== */
 .float-instagram{
     position:fixed;
     bottom:25px;
@@ -277,7 +288,6 @@ input:focus, textarea:focus, select:focus{
     background:#d4af37;
     padding:15px;
     border-radius:50%;
-    box-shadow:0 5px 20px rgba(0,0,0,0.5);
 }
 
 .float-instagram img{
@@ -298,23 +308,13 @@ input:focus, textarea:focus, select:focus{
 
 /* RESPONSIVE */
 @media(max-width:1000px){
-    .card-container{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-    .hero-text{
-        padding-right:0;
-        margin-bottom:40px;
-    }
+    .card-container{grid-template-columns:repeat(2,1fr);}
+    .hero{flex-direction:column;text-align:center;}
+    .hero-text{padding-right:0;margin-bottom:40px;}
 }
 
 @media(max-width:700px){
-    .card-container{
-        grid-template-columns:1fr;
-    }
+    .card-container{grid-template-columns:1fr;}
 }
 
 </style>
@@ -325,35 +325,34 @@ input:focus, textarea:focus, select:focus{
 <div class="bg-image"></div>
 
 <header>
-    <h2>SJ Photo</h2>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#feedback">Feedback</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<div class="logo">
+<img src="sj-logo.png" alt="SJ Logo">
+</div>
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
-    <div class="hero-text">
-        <h1>Welcome to SJ Photo</h1>
-        <p>We are the best choice to help you increase the attraction to your product.</p>
-        <button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Try Free Now</button>
-    </div>
+<div class="hero-text">
+<h1>Welcome to SJ Photo</h1>
+<p>We are the best choice to help you increase the attraction to your product.</p>
+<button class="btn" onclick="scrollAndSelect('Newborn')">Try Free Now</button>
+</div>
 
-    <div class="slider">
-        <div class="slides">
-            <img src="https://images.pexels.com/photos/3993214/pexels-photo-3993214.jpeg?auto=compress&w=900">
-            <img src="https://images.pexels.com/photos/3552413/pexels-photo-3552413.jpeg?auto=compress&w=900">
-            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=900">
-        </div>
-    </div>
+<div class="slider">
+<div class="slides">
+<img src="https://images.pexels.com/photos/3993214/pexels-photo-3993214.jpeg?auto=compress&w=900">
+<img src="https://images.pexels.com/photos/3552413/pexels-photo-3552413.jpeg?auto=compress&w=900">
+<img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=900">
+</div>
+</div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="services">
 <h2>Services & Pricing</h2>
 
@@ -368,9 +367,8 @@ input:focus, textarea:focus, select:focus{
 <li>Eyes and face retouching</li>
 <li>Color correction</li>
 <li>Baby skin smoothing</li>
-<li>Modify expressions</li>
-<li>Remove unwanted elements</li>
 </ul>
+<button class="btn" onclick="scrollAndSelect('Newborn')">Choose Plan</button>
 </div>
 
 <div class="card">
@@ -379,11 +377,10 @@ input:focus, textarea:focus, select:focus{
 <div class="price">$4</div>
 <ul>
 <li>Skin retouching</li>
-<li>Liquefy</li>
 <li>Color correction</li>
 <li>Hair retouching</li>
-<li>Background enhancement</li>
 </ul>
+<button class="btn" onclick="scrollAndSelect('Portrait')">Choose Plan</button>
 </div>
 
 <div class="card">
@@ -392,11 +389,10 @@ input:focus, textarea:focus, select:focus{
 <div class="price">$4</div>
 <ul>
 <li>Face beauty retouch</li>
-<li>Hair retouching</li>
-<li>Skin smoothing</li>
 <li>Teeth whitening</li>
 <li>Wrinkle removal</li>
 </ul>
+<button class="btn" onclick="scrollAndSelect('Maternity')">Choose Plan</button>
 </div>
 
 <div class="card">
@@ -405,11 +401,10 @@ input:focus, textarea:focus, select:focus{
 <div class="price">$4</div>
 <ul>
 <li>Skin softening</li>
-<li>Color correction</li>
-<li>Whiten teeth</li>
 <li>Body slimming</li>
 <li>Sharpening</li>
 </ul>
+<button class="btn" onclick="scrollAndSelect('Model')">Choose Plan</button>
 </div>
 
 <div class="card highlight">
@@ -420,23 +415,13 @@ input:focus, textarea:focus, select:focus{
 <li>High-end skin retouching</li>
 <li>Dodge and Burn</li>
 <li>Digital makeup</li>
-<li>Body reshaping</li>
-<li>Flaw removal</li>
 </ul>
+<button class="btn" onclick="scrollAndSelect('High-End')">Choose Premium</button>
 </div>
 
 </div>
 </section>
 
-<!-- FEEDBACK -->
-<section id="feedback" class="feedback">
-<h2>Client Feedback</h2>
-<div class="feedback-item">“Absolutely amazing work! My photos look magazine-ready.”</div>
-<div class="feedback-item">“Fast turnaround and perfect skin retouch.”</div>
-<div class="feedback-item">“SJ matched my style exactly. Highly recommended!”</div>
-</section>
-
-<!-- CONTACT -->
 <section id="contact" class="contact">
 <h2>Send Your Images & Get a Quote</h2>
 <p>Tell me about your project and how many images you have. I’ll reply with a clear quote and turnaround time.</p>
@@ -444,7 +429,7 @@ input:focus, textarea:focus, select:focus{
 <form action="https://formspree.io/f/xbdagqon" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Email / Contact" required>
-<select name="type">
+<select name="type" id="photoType">
 <option>Newborn</option>
 <option>Portrait</option>
 <option>Maternity</option>
@@ -456,16 +441,37 @@ input:focus, textarea:focus, select:focus{
 <button class="btn">Send Request</button>
 </form>
 
-<p>Email: sj.retoucher@gmail.com</p>
-<p>Instagram: @sj.retoucher</p>
-<p>Working hours: Usually reply within a few working hours.</p>
+<p>📧 sj.retoucher@gmail.com</p>
+<p>📷 @sj.retoucher</p>
+<p>⏱ Usually reply within a few working hours.</p>
 </section>
+
+<footer>
+<div class="footer-left">
+<img src="sj-logo.png">
+<p><strong>SJ Photo</strong> is a professional retouching studio specializing in beauty, fashion and commercial photography.  
+With precision, natural skin preservation, and attention to micro-details, we transform images into magazine-ready visuals while maintaining authenticity.</p>
+</div>
+
+<div class="footer-right">
+<p><span>📧 Email:</span> sj.retoucher@gmail.com</p>
+<p><span>📷 Instagram:</span> @sj.retoucher</p>
+<p><span>⏰ Working Hours:</span> Reply within a few hours</p>
+</div>
+</footer>
 
 <a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-instagram">
 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
 </a>
 
 <a href="#contact" class="float-quote">Get a Quote</a>
+
+<script>
+function scrollAndSelect(type){
+document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+document.getElementById('photoType').value = type;
+}
+</script>
 
 </body>
 </html>
