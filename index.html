@@ -536,11 +536,33 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
   </p>
 
   <form id="quote-form">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Tell us about your project..." required></textarea>
-    <button type="submit">Send Request</button>
-  </form>
+
+  <input type="text" name="name" placeholder="Your Name" required>
+
+  <input type="email" name="_replyto" placeholder="Your Email" required>
+
+  <select name="photo_type" required>
+    <option value="">Select Photo Type</option>
+    <option>Newborn</option>
+    <option>Portrait</option>
+    <option>Maternity</option>
+    <option>Model</option>
+    <option>High-End</option>
+  </select>
+
+  <input type="text" name="image_link" placeholder="Image Link" required>
+
+  <textarea name="message" placeholder="Project Details..." required></textarea>
+
+  <!-- Quan trọng -->
+  <input type="hidden" name="_subject" value="New Quote Request from SJ Photo Website">
+
+  <button type="submit">Send Request</button>
+
+</form>
+
+<p id="form-status"></p>
+
 
   <p id="form-status" style="margin-top:15px;font-weight:600;"></p>
 </section>
@@ -622,6 +644,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
