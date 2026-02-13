@@ -525,20 +525,30 @@ Working hours: usually reply within a few working hours.
 </p>
 
 <form action="https://formspree.io/f/xbdagqon" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email / Contact" required>
-<select name="photo_type">
-<option>Select Photo Type</option>
-<option>Newborn</option>
-<option>Portrait</option>
-<option>Maternity</option>
-<option>Model</option>
-<option>High-End</option>
-</select>
-<input type="text" name="image_link" placeholder="Image Link (Drive, Dropbox...)">
-<textarea name="details" rows="5" placeholder="Project Details"></textarea>
-<button type="submit">Send Request</button>
+
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <input type="email" name="email" placeholder="Your Email Address" required>
+
+    <select name="photo_type" required>
+        <option value="">Select Photo Type</option>
+        <option value="Newborn">Newborn</option>
+        <option value="Portrait">Portrait</option>
+        <option value="Maternity">Maternity</option>
+        <option value="Model">Model</option>
+        <option value="High-End">High-End</option>
+    </select>
+
+    <input type="text" name="image_link" placeholder="Image Link (Google Drive / WeTransfer)" required>
+
+    <textarea name="project_details" rows="5" placeholder="Tell me about your project..." required></textarea>
+
+    <input type="hidden" name="_subject" value="New Quote Request - SJ Photo">
+
+    <button type="submit">Send Request</button>
+
 </form>
+
 </section>
 
 <a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-insta"><i class="fab fa-instagram"></i></a>
@@ -610,5 +620,6 @@ startAuto();
 
 </body>
 </html>
+
 
 
