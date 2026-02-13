@@ -39,54 +39,67 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 8%;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.85);
 z-index:1000;
 }
 
-.logo{
-height:55px;
-cursor:pointer;
-}
+.logo{height:55px;cursor:pointer;}
 
 nav a{
 color:#fff;
 margin-left:30px;
 text-decoration:none;
 font-weight:500;
-transition:0.3s;
 }
 
 nav a:hover{color:#ffd700;}
 
 /* HERO */
 .hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:50px;
 padding-top:140px;
-text-align:center;
+min-height:90vh;
 }
 
-.hero h1{
-font-size:50px;
+.hero-text{
+flex:1;
+}
+
+.hero-text h1{
+font-size:48px;
 color:#ffd700;
 margin-bottom:20px;
 }
 
-.hero p{
-font-size:20px;
-margin-bottom:40px;
+.hero-text p{
+font-size:18px;
+margin-bottom:30px;
 opacity:0.9;
 }
 
-/* SLIDER 1360x540 */
+.btn{
+display:inline-block;
+padding:14px 35px;
+background:linear-gradient(45deg,#ffd700,#b8860b);
+color:#000;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+cursor:pointer;
+}
+
+/* SLIDER (thu chiều ngang lại) */
 .slider{
-width:1360px;
-max-width:100%;
+flex:1;
+max-width:700px;   /* giảm chiều ngang để ngang hàng Welcome */
 height:540px;
-margin:auto;
 overflow:hidden;
 border-radius:25px;
 position:relative;
-box-shadow:0 0 40px rgba(255,215,0,0.6);
+box-shadow:0 0 40px rgba(255,215,0,0.5);
 }
 
 .slides{
@@ -102,21 +115,6 @@ height:100%;
 object-fit:cover;
 }
 
-/* BUTTON */
-.btn{
-display:inline-block;
-padding:14px 35px;
-background:linear-gradient(45deg,#ffd700,#b8860b);
-color:#000;
-border-radius:30px;
-font-weight:600;
-text-decoration:none;
-transition:0.3s;
-cursor:pointer;
-}
-
-.btn:hover{transform:scale(1.05);}
-
 /* SECTION TITLE */
 .section-title{
 text-align:center;
@@ -124,7 +122,7 @@ margin-bottom:60px;
 }
 
 .section-title h2{
-font-size:40px;
+font-size:38px;
 color:#ffd700;
 position:relative;
 display:inline-block;
@@ -141,7 +139,7 @@ left:20%;
 bottom:0;
 }
 
-/* SERVICES */
+/* SERVICES + PRICING */
 .grid-3{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -163,6 +161,7 @@ border:1px solid rgba(255,215,0,0.4);
 border-radius:25px;
 overflow:hidden;
 backdrop-filter:blur(10px);
+padding:25px;
 transition:0.3s;
 }
 
@@ -171,22 +170,8 @@ transform:translateY(-10px);
 box-shadow:0 0 25px rgba(255,215,0,0.4);
 }
 
-.card-img{
-width:100%;
-aspect-ratio:4/5;
-overflow:hidden;
-}
-
-.card-img img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.card-content{padding:25px;}
-
 .card h3{color:#ffd700;margin-bottom:10px;}
-.price{font-size:26px;margin-bottom:15px;}
+.price{font-size:24px;margin-bottom:15px;}
 
 .card ul{
 list-style:none;
@@ -212,9 +197,9 @@ border:1px solid rgba(255,215,0,0.3);
 
 /* FAQ */
 .faq-item{
-margin-bottom:20px;
 background:rgba(255,255,255,0.05);
 padding:20px;
+margin-bottom:20px;
 border-radius:15px;
 }
 
@@ -265,7 +250,6 @@ color:#fff;
 padding:15px;
 border-radius:50%;
 font-size:20px;
-z-index:1000;
 }
 
 .float-quote{
@@ -277,12 +261,12 @@ color:#000;
 padding:12px 20px;
 border-radius:30px;
 font-weight:600;
-z-index:1000;
 }
 
-@media(max-width:1000px){
+@media(max-width:1100px){
+.hero{flex-direction:column;text-align:center;}
+.slider{max-width:100%;height:400px;}
 .grid-3,.grid-2,.testimonials{grid-template-columns:1fr;}
-.slider{height:300px;}
 }
 </style>
 </head>
@@ -301,9 +285,11 @@ z-index:1000;
 </header>
 
 <section class="hero">
+<div class="hero-text">
 <h1>Welcome to SJphoto</h1>
 <p>We are the best choice to help you increase the attraction to your product.</p>
 <a href="#contact" class="btn">Try Free Now</a>
+</div>
 
 <div class="slider">
 <div class="slides" id="slides">
@@ -314,16 +300,92 @@ z-index:1000;
 </div>
 </section>
 
-<!-- Các phần Services + Pricing + đầy đủ mô tả giữ nguyên như yêu cầu trước -->
+<!-- SERVICES -->
+<section id="services">
+<div class="section-title"><h2>Services</h2></div>
+<div class="grid-3">
+
+<div class="card">
+<h3>Newborn & Basic</h3>
+<div class="price">$2</div>
+<ul>
+<li>Background Removal</li>
+<li>Eyes & Face Retouching</li>
+<li>Skin smoothing & blemish removal</li>
+<li>Lighting adjustment</li>
+<li>Match your retouching style</li>
+</ul>
+<button class="btn" onclick="selectType('Newborn & Basic')">Get Quote</button>
+</div>
+
+<div class="card">
+<h3>Portrait</h3>
+<div class="price">$4</div>
+<ul>
+<li>Skin Retouching</li>
+<li>Body/Face Liquefy</li>
+<li>Hair Retouching</li>
+<li>Background Enhancement</li>
+<li>Following Client Style</li>
+</ul>
+<button class="btn" onclick="selectType('Portrait')">Get Quote</button>
+</div>
+
+<div class="card">
+<h3>Maternity</h3>
+<div class="price">$4</div>
+<ul>
+<li>Color Correction</li>
+<li>Skin Tone Smoothing</li>
+<li>Teeth Whitening</li>
+<li>Wrinkle Removal</li>
+<li>Hair Retouching</li>
+</ul>
+<button class="btn" onclick="selectType('Maternity')">Get Quote</button>
+</div>
+
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+<div class="section-title"><h2>Pricing</h2></div>
+
+<div class="grid-2">
+
+<div class="card">
+<h3>Model</h3>
+<div class="price">$4</div>
+<ul>
+<li>Skin Softening</li>
+<li>Color Correction</li>
+<li>Body Reshaping</li>
+<li>Sharpness & Contrast</li>
+</ul>
+<button class="btn" onclick="selectType('Model')">Get Quote</button>
+</div>
+
+<div class="card">
+<h3>High-End</h3>
+<div class="price">$7</div>
+<ul>
+<li>High-End Skin Retouch</li>
+<li>Dodge & Burn</li>
+<li>Digital Makeup</li>
+<li>Professional Finish</li>
+</ul>
+<button class="btn" onclick="selectType('High-End')">Get Quote</button>
+</div>
+
+</div>
+</section>
 
 <!-- CONTACT -->
 <section id="contact">
 <div class="section-title"><h2>Send your images & get a quote</h2></div>
-
 <form action="https://formspree.io/f/xbdagqon" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Your Email" required>
-
 <select name="photo_type" id="photoType">
 <option value="">Select Photo Type</option>
 <option>Newborn & Basic</option>
@@ -332,10 +394,7 @@ z-index:1000;
 <option>Model</option>
 <option>High-End</option>
 </select>
-
-<input type="text" name="image_link" placeholder="Image Link">
 <textarea name="details" rows="5" placeholder="Project Details"></textarea>
-
 <button type="submit">Send Request</button>
 </form>
 </section>
@@ -343,17 +402,13 @@ z-index:1000;
 <footer>
 <div class="footer-left">
 <img src="https://github.com/sjretouch/sjretouch/blob/main/ChatGPT%20Image%20Feb%2013,%202026,%2006_18_47%20PM.png?raw=true">
-<p>
-Hi, I'm Hung — professional retoucher with 8+ years of experience.
-Specialized in high-end natural skin retouching for photographers worldwide.
-</p>
+<p>Hi, I'm Hung — professional retoucher with 8+ years experience helping photographers worldwide.</p>
 </div>
 
 <div class="footer-right">
 <h4>Contact</h4>
 <p>Email: sj.retoucher@gmail.com</p>
 <p>Instagram: @sj.retoucher</p>
-<p>Usually reply within a few working hours.</p>
 </div>
 </footer>
 
@@ -361,14 +416,18 @@ Specialized in high-end natural skin retouching for photographers worldwide.
 <a href="#contact" class="float-quote">Get Quote</a>
 
 <script>
-let slideIndex=0;
+let index=0;
 const slides=document.getElementById("slides");
-const totalSlides=3;
-
+const total=3;
 setInterval(()=>{
-slideIndex=(slideIndex+1)%totalSlides;
-slides.style.transform=`translateX(-${slideIndex*100}%)`;
+index=(index+1)%total;
+slides.style.transform=`translateX(-${index*100}%)`;
 },4000);
+
+function selectType(type){
+document.getElementById("photoType").value=type;
+document.getElementById("contact").scrollIntoView({behavior:'smooth'});
+}
 </script>
 
 </body>
