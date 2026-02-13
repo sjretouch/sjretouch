@@ -9,337 +9,389 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
 
 body{
-    color:white;
-    background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1920') no-repeat center center/cover;
-    background-attachment:fixed;
+color:#fff;
+background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1920') no-repeat center center/cover;
+background-attachment:fixed;
 }
 
 body::before{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.75);
-    backdrop-filter:blur(6px);
-    z-index:-1;
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(6px);
+z-index:-1;
 }
 
-section{
-    padding:80px 10%;
+section{padding:100px 10%;}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
 }
+
+header img{height:50px;}
+
+nav a{
+color:#fff;
+margin-left:30px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{color:#ffd700;}
 
 /* HERO */
 .hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:60px;
-    min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+min-height:100vh;
+padding-top:120px;
 }
 
 .hero-text{
-    max-width:600px;
+max-width:500px;
 }
 
 .hero-text h1{
-    font-size:48px;
-    color:#ffd700;
+font-size:50px;
+color:#ffd700;
 }
 
 .hero-text p{
-    margin:20px 0;
-    font-size:18px;
-    opacity:0.9;
+margin:20px 0 30px;
+font-size:18px;
+opacity:0.9;
 }
 
-.btn-gold{
-    display:inline-block;
-    padding:12px 30px;
-    background:linear-gradient(45deg,#ffd700,#b8860b);
-    color:black;
-    border-radius:30px;
-    font-weight:600;
-    text-decoration:none;
-    transition:0.3s;
+.btn{
+display:inline-block;
+padding:14px 35px;
+background:linear-gradient(45deg,#ffd700,#b8860b);
+color:#000;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
 }
 
-.btn-gold:hover{
-    transform:scale(1.05);
-}
+.btn:hover{transform:scale(1.05);}
 
-/* HERO SLIDER 4x5 */
+/* HERO SLIDER 4x5 BIG */
 .slider{
-    position:relative;
-    width:350px;
-    aspect-ratio:4/5;
-    overflow:hidden;
-    border-radius:20px;
-    box-shadow:0 0 30px rgba(255,215,0,0.5);
+position:relative;
+width:450px;
+aspect-ratio:4/5;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,215,0,0.6);
 }
 
 .slide{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:0;
-    transition:opacity 1.2s ease-in-out;
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1.2s ease-in-out;
 }
 
-.slide.active{
-    opacity:1;
-}
+.slide.active{opacity:1;}
 
-/* SECTION TITLE */
+/* SECTION TITLE DECORATION */
 .section-title{
-    text-align:center;
-    font-size:36px;
-    color:#ffd700;
-    margin-bottom:50px;
+text-align:center;
+margin-bottom:60px;
+position:relative;
 }
 
-/* PRICING */
-.pricing-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-    margin-bottom:30px;
+.section-title h2{
+font-size:40px;
+color:#ffd700;
+display:inline-block;
+position:relative;
+padding-bottom:15px;
 }
 
-.pricing-grid.bottom{
-    grid-template-columns:repeat(2,1fr);
-    max-width:900px;
-    margin:0 auto;
+.section-title h2::after{
+content:"";
+position:absolute;
+width:60%;
+height:3px;
+background:#ffd700;
+left:20%;
+bottom:0;
+border-radius:10px;
+}
+
+/* SERVICES GRID */
+.grid-3{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+margin-bottom:40px;
+}
+
+.grid-2{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:40px;
+max-width:1000px;
+margin:auto;
 }
 
 .card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,215,0,0.4);
-    border-radius:20px;
-    overflow:hidden;
-    backdrop-filter:blur(10px);
-    transition:0.3s;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,215,0,0.4);
+border-radius:25px;
+overflow:hidden;
+backdrop-filter:blur(10px);
+transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 25px rgba(255,215,0,0.4);
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(255,215,0,0.4);
 }
 
-/* IMAGE 4x5 */
 .card-img{
-    width:100%;
-    aspect-ratio:4/5;
-    overflow:hidden;
+width:100%;
+aspect-ratio:4/5;
+overflow:hidden;
 }
 
 .card-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:0.4s;
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.4s;
 }
 
 .card:hover .card-img img{
-    transform:scale(1.1);
+transform:scale(1.1);
 }
 
 .card-content{
-    padding:25px;
+padding:25px;
 }
 
 .card h3{
-    color:#ffd700;
-    margin-bottom:10px;
+color:#ffd700;
+margin-bottom:10px;
 }
 
 .price{
-    font-size:26px;
-    margin-bottom:15px;
+font-size:26px;
+margin-bottom:15px;
 }
 
 .card ul{
-    list-style:none;
-    font-size:14px;
-    margin-bottom:20px;
+list-style:none;
+font-size:14px;
+margin-bottom:20px;
 }
 
-.card ul li{
-    margin-bottom:8px;
+.card ul li{margin-bottom:8px;}
+
+/* FEEDBACK */
+.testimonials{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.testimonial{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:20px;
+border:1px solid rgba(255,215,0,0.3);
 }
 
 /* FORM */
 form{
-    max-width:600px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+max-width:600px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
 form input, form select, form textarea{
-    padding:12px;
-    border-radius:10px;
-    border:none;
+padding:12px;
+border-radius:10px;
+border:none;
 }
 
 form button{
-    padding:12px;
-    border:none;
-    border-radius:30px;
-    background:linear-gradient(45deg,#ffd700,#b8860b);
-    font-weight:600;
-    cursor:pointer;
+padding:14px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ffd700,#b8860b);
+font-weight:600;
+cursor:pointer;
 }
 
 /* FOOTER */
 footer{
-    background:rgba(0,0,0,0.85);
-    padding:60px 10%;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:40px;
+background:rgba(0,0,0,0.9);
+padding:80px 10%;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:50px;
 }
 
-.footer-left img{
-    width:120px;
-    margin-bottom:20px;
+.footer-left img{width:120px;margin-bottom:20px;}
+
+.footer-left p{max-width:400px;line-height:1.6;opacity:0.85;}
+
+.footer-right h4{color:#ffd700;margin-bottom:15px;}
+
+.footer-right p{margin-bottom:10px;}
+
+/* FLOATING BUTTONS */
+.float-insta{
+position:fixed;
+right:25px;
+bottom:25px;
+background:#e1306c;
+color:#fff;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+z-index:1000;
 }
 
-.footer-left p{
-    max-width:400px;
-    line-height:1.6;
-    opacity:0.85;
-}
-
-.footer-right h4{
-    color:#ffd700;
-    margin-bottom:15px;
-}
-
-.footer-right p{
-    margin-bottom:10px;
+.float-quote{
+position:fixed;
+right:25px;
+bottom:90px;
+background:#ffd700;
+color:#000;
+padding:12px 20px;
+border-radius:30px;
+font-weight:600;
+z-index:1000;
 }
 
 @media(max-width:1000px){
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-    .pricing-grid,
-    .pricing-grid.bottom{
-        grid-template-columns:1fr;
-    }
+.hero{flex-direction:column;text-align:center;}
+.grid-3,.grid-2,.testimonials{grid-template-columns:1fr;}
+.slider{width:90%;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-text">
-        <h1>Welcome to SJphoto</h1>
-        <p>We are the best choice to help you increase the attraction to your product.</p>
-        <a href="#quote" class="btn-gold">Try Free Now</a>
-    </div>
+<header>
+<img src="YOUR_LOGO.png">
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#quote">Pricing</a>
+<a href="#quote">Contact</a>
+</nav>
+</header>
 
-    <div class="slider">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600" class="slide active">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600" class="slide">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600" class="slide">
-    </div>
+<section class="hero">
+<div class="hero-text">
+<h1>Welcome to SJphoto</h1>
+<p>We are the best choice to help you increase the attraction to your product.</p>
+<a href="#quote" class="btn">Try Free Now</a>
+</div>
+
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800" class="slide active">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" class="slide">
+<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800" class="slide">
+</div>
 </section>
 
 <!-- SERVICES -->
-<section>
-<h2 class="section-title">Our Services</h2>
+<section id="services">
+<div class="section-title"><h2>Our Services</h2></div>
 
-<div class="pricing-grid">
-
-<!-- NEWBORN -->
+<div class="grid-3">
 <div class="card">
-<div class="card-img">
-<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600">
-</div>
+<div class="card-img"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600"></div>
 <div class="card-content">
 <h3>Newborn & Basic</h3>
 <div class="price">$2</div>
-<button class="btn-gold" onclick="selectType('Newborn & Basic')">Get Quote</button>
+<button class="btn" onclick="selectType('Newborn & Basic')">Get Quote</button>
 </div>
 </div>
 
-<!-- PORTRAIT -->
 <div class="card">
-<div class="card-img">
-<img src="https://images.unsplash.com/photo-1502767089025-6572583495b4?w=600">
-</div>
+<div class="card-img"><img src="https://images.unsplash.com/photo-1502767089025-6572583495b4?w=600"></div>
 <div class="card-content">
 <h3>Portrait</h3>
 <div class="price">$4</div>
-<button class="btn-gold" onclick="selectType('Portrait')">Get Quote</button>
+<button class="btn" onclick="selectType('Portrait')">Get Quote</button>
 </div>
 </div>
 
-<!-- MATERNITY -->
 <div class="card">
-<div class="card-img">
-<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600">
-</div>
+<div class="card-img"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600"></div>
 <div class="card-content">
 <h3>Maternity</h3>
 <div class="price">$4</div>
-<button class="btn-gold" onclick="selectType('Maternity')">Get Quote</button>
+<button class="btn" onclick="selectType('Maternity')">Get Quote</button>
+</div>
 </div>
 </div>
 
-</div>
-
-<div class="pricing-grid bottom">
-
-<!-- MODEL -->
+<div class="grid-2">
 <div class="card">
-<div class="card-img">
-<img src="https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?w=600">
-</div>
+<div class="card-img"><img src="https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?w=600"></div>
 <div class="card-content">
 <h3>Model</h3>
 <div class="price">$4</div>
-<button class="btn-gold" onclick="selectType('Model')">Get Quote</button>
+<button class="btn" onclick="selectType('Model')">Get Quote</button>
 </div>
 </div>
 
-<!-- HIGH END -->
 <div class="card">
-<div class="card-img">
-<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600">
-</div>
+<div class="card-img"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"></div>
 <div class="card-content">
 <h3>High-End</h3>
 <div class="price">$7</div>
-<button class="btn-gold" onclick="selectType('High-End')">Get Quote</button>
+<button class="btn" onclick="selectType('High-End')">Get Quote</button>
 </div>
 </div>
+</div>
+</section>
 
+<!-- FEEDBACK -->
+<section>
+<div class="section-title"><h2>Client Feedback</h2></div>
+<div class="testimonials">
+<div class="testimonial">“Amazing skin retouch! Very natural and professional.”</div>
+<div class="testimonial">“Fast delivery and perfect communication.”</div>
+<div class="testimonial">“My clients love the final images!”</div>
 </div>
 </section>
 
 <!-- QUOTE -->
 <section id="quote">
-<h2 class="section-title">Send your images & get a quote</h2>
+<div class="section-title"><h2>Send your images & get a quote</h2></div>
 
 <form action="https://formspree.io/f/xbdagqon" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
@@ -354,21 +406,19 @@ footer{
 <option>High-End</option>
 </select>
 
-<input type="text" name="image_link" placeholder="Image Link (Drive/Dropbox)">
+<input type="text" name="image_link" placeholder="Image Link">
 <textarea name="details" rows="5" placeholder="Project Details"></textarea>
 
 <button type="submit">Send Request</button>
 </form>
 </section>
 
-<!-- FOOTER -->
 <footer>
 <div class="footer-left">
 <img src="YOUR_LOGO.png">
 <p>
-Hi, I'm Hung — a professional retoucher with 8+ years of experience.
-I specialize in delivering natural, high-end retouching for photographers worldwide.
-My goal is simple: clean, elegant, and market-ready images.
+Hi, I'm SJ — a professional retoucher with 8+ years of experience.
+I help photographers worldwide achieve clean, natural and high-end results.
 </p>
 </div>
 
@@ -376,9 +426,12 @@ My goal is simple: clean, elegant, and market-ready images.
 <h4>Contact</h4>
 <p>Email: sj.retoucher@gmail.com</p>
 <p>Instagram: @sj.retoucher</p>
-<p>Working hours: Usually reply within a few working hours.</p>
+<p>Usually reply within a few working hours.</p>
 </div>
 </footer>
+
+<a href="https://www.instagram.com/sj.retoucher/" class="float-insta"><i class="fab fa-instagram"></i></a>
+<a href="#quote" class="float-quote">Get Quote</a>
 
 <script>
 let slides=document.querySelectorAll(".slide");
@@ -387,7 +440,7 @@ setInterval(()=>{
 slides[index].classList.remove("active");
 index=(index+1)%slides.length;
 slides[index].classList.add("active");
-},3000);
+},3500);
 
 function selectType(type){
 document.getElementById("photoType").value=type;
