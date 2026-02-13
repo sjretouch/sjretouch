@@ -14,7 +14,7 @@ html{scroll-behavior:smooth;}
 
 body{
 color:#fff;
-background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1920') no-repeat center center/cover;
+background:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920') no-repeat center center/cover;
 background-attachment:fixed;
 }
 
@@ -23,13 +23,29 @@ content:"";
 position:fixed;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.75);
-backdrop-filter:blur(6px);
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(8px);
 z-index:-1;
 }
 
 section{padding:100px 8%;}
-h2{text-align:center;font-size:38px;color:#ffd700;margin-bottom:60px;}
+
+h2{
+text-align:center;
+font-size:40px;
+color:#ffd700;
+margin-bottom:60px;
+position:relative;
+}
+
+h2::after{
+content:"";
+width:80px;
+height:3px;
+background:#ffd700;
+display:block;
+margin:15px auto 0;
+}
 
 /* HEADER */
 header{
@@ -39,18 +55,22 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
-background:rgba(0,0,0,0.9);
+padding:25px 8%;
+background:rgba(0,0,0,0.95);
 z-index:1000;
 }
 
-.logo{height:55px;cursor:pointer;}
+.logo{
+height:70px;
+cursor:pointer;
+}
 
 nav a{
 color:#fff;
-margin-left:30px;
+margin-left:35px;
 text-decoration:none;
 font-weight:500;
+transition:0.3s;
 }
 
 nav a:hover{color:#ffd700;}
@@ -60,44 +80,46 @@ nav a:hover{color:#ffd700;}
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:50px;
-padding-top:140px;
+gap:60px;
+padding-top:160px;
 min-height:90vh;
 }
 
 .hero-text{flex:1;}
 
 .hero-text h1{
-font-size:48px;
+font-size:50px;
 color:#ffd700;
 margin-bottom:20px;
 }
 
 .hero-text p{
-font-size:18px;
+font-size:20px;
 margin-bottom:30px;
 opacity:0.9;
 }
 
 .btn{
 display:inline-block;
-padding:14px 35px;
+padding:15px 35px;
 background:linear-gradient(45deg,#ffd700,#b8860b);
 color:#000;
 border-radius:30px;
 font-weight:600;
 text-decoration:none;
-cursor:pointer;
+transition:0.3s;
 }
 
-/* SLIDER */
+.btn:hover{transform:scale(1.05);}
+
+/* SLIDER 8x5 */
 .slider{
 flex:1;
-max-width:700px;
-height:540px;
+max-width:1060px;
+height:534px;
 overflow:hidden;
 border-radius:25px;
-box-shadow:0 0 40px rgba(255,215,0,0.5);
+box-shadow:0 0 40px rgba(255,215,0,0.6);
 }
 
 .slides{
@@ -131,7 +153,7 @@ transition:0.3s;
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 25px rgba(255,215,0,0.4);
+box-shadow:0 0 30px rgba(255,215,0,0.5);
 }
 
 .card img{
@@ -140,20 +162,26 @@ aspect-ratio:4/5;
 object-fit:cover;
 }
 
-.card-content{
-padding:25px;
-}
+.card-content{padding:25px;}
 
 .card h3{color:#ffd700;margin-bottom:10px;}
 .price{font-size:22px;margin-bottom:15px;}
 
-.card ul{
-list-style:none;
-font-size:14px;
-margin-bottom:20px;
+.card ul{list-style:none;font-size:14px;margin-bottom:20px;}
+.card ul li{margin-bottom:6px;}
+
+/* FEEDBACK */
+.feedback{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
 }
 
-.card ul li{margin-bottom:6px;}
+.feedback-item{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:20px;
+}
 
 /* FAQ */
 .faq-item{
@@ -163,16 +191,7 @@ margin-bottom:20px;
 border-radius:15px;
 }
 
-/* COMMITMENT */
-.commitment{
-max-width:900px;
-margin:auto;
-text-align:center;
-font-size:18px;
-line-height:1.8;
-}
-
-/* FORM */
+/* CONTACT */
 form{
 max-width:600px;
 margin:auto;
@@ -196,9 +215,31 @@ font-weight:600;
 cursor:pointer;
 }
 
+/* FLOAT BUTTONS */
+.float-insta,.float-quote{
+position:fixed;
+right:20px;
+padding:15px;
+border-radius:50%;
+color:#fff;
+font-size:20px;
+z-index:1000;
+}
+
+.float-insta{
+bottom:90px;
+background:#E1306C;
+}
+
+.float-quote{
+bottom:20px;
+background:#ffd700;
+color:#000;
+}
+
 /* FOOTER */
 footer{
-background:rgba(0,0,0,0.9);
+background:rgba(0,0,0,0.95);
 padding:80px 8%;
 display:flex;
 justify-content:space-between;
@@ -206,14 +247,17 @@ flex-wrap:wrap;
 gap:50px;
 }
 
-.footer-left img{width:120px;margin-bottom:20px;}
+.footer-left img{width:130px;margin-bottom:20px;}
 .footer-left p{max-width:400px;line-height:1.6;opacity:0.85;}
+
 .footer-right h4{color:#ffd700;margin-bottom:15px;}
+.footer-right p{margin-bottom:10px;}
 
 @media(max-width:1100px){
 .hero{flex-direction:column;text-align:center;}
-.slider{max-width:100%;height:400px;}
+.slider{height:400px;}
 .grid{grid-template-columns:1fr;}
+.feedback{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -224,19 +268,18 @@ gap:50px;
 <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
 <nav>
 <a href="#">Home</a>
-<a href="#services">Services & Pricing</a>
-<a href="#commitment">Commitment</a>
-<a href="#faq">FAQs</a>
-<a href="#contact">Contact</a>
-<a href="https://jhretouch.github.io/Jhretouch/" target="_blank">Gallery</a>
+<a href="#services">Services</a>
+<a href="https://www.instagram.com/sj.retoucher/" target="_blank">Gallery</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact Us</a>
 </nav>
 </header>
 
 <section class="hero">
 <div class="hero-text">
-<h1>Professional Photo Retouching Services</h1>
-<p>High-end, natural, and detail-focused retouching tailored for photographers worldwide.</p>
-<a href="#contact" class="btn">Get a Free Quote</a>
+<h1>Welcome to SJphoto</h1>
+<p>We are the best choice to help you increase the attraction to your product.</p>
+<a href="#contact" class="btn">Try Free Now</a>
 </div>
 
 <div class="slider">
@@ -248,50 +291,92 @@ gap:50px;
 </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
-<h2>Services & Pricing</h2>
+<h2>Services</h2>
 <div class="grid">
 
+<!-- Repeat card structure for 5 services -->
+<!-- Newborn -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800">
 <div class="card-content">
-<h3>Portrait Retouching</h3>
-<div class="price">$4 / image</div>
+<h3>Newborn & Basic</h3>
+<div class="price">$2 / image</div>
 <ul>
-<li>Skin retouch (natural & high-end)</li>
-<li>Color correction</li>
-<li>Hair & flyaway cleanup</li>
-<li>Background enhancement</li>
+<li>Background Removal</li>
+<li>Eyes and face retouching</li>
+<li>Natural baby skin smoothing</li>
+<li>Lighting adjustment</li>
+<li>Match your retouching style</li>
 </ul>
 <a href="#contact" class="btn">Get Quote</a>
 </div>
 </div>
 
+<!-- Portrait -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800">
+<div class="card-content">
+<h3>Portrait</h3>
+<div class="price">$4 / image</div>
+<ul>
+<li>Skin retouching</li>
+<li>Color correction</li>
+<li>Hair retouching</li>
+<li>Background enhancement</li>
+<li>Following Clients’ Style</li>
+</ul>
+<a href="#contact" class="btn">Get Quote</a>
+</div>
+</div>
+
+<!-- Maternity -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800">
 <div class="card-content">
 <h3>Maternity</h3>
 <div class="price">$4 / image</div>
 <ul>
-<li>Skin smoothing</li>
-<li>Body refinement</li>
-<li>Lighting adjustment</li>
-<li>Professional finish</li>
+<li>Face beauty retouching</li>
+<li>Hair retouching</li>
+<li>Skin tone smoothing</li>
+<li>Teeth whitening</li>
+<li>Eliminating wrinkles</li>
 </ul>
 <a href="#contact" class="btn">Get Quote</a>
 </div>
 </div>
 
+<!-- Model -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800">
 <div class="card-content">
-<h3>High-End Beauty</h3>
+<h3>Model</h3>
+<div class="price">$4 / image</div>
+<ul>
+<li>Skin softening</li>
+<li>Body slimming</li>
+<li>Contrast adjustment</li>
+<li>Background retouching</li>
+<li>Following Clients’ Style</li>
+</ul>
+<a href="#contact" class="btn">Get Quote</a>
+</div>
+</div>
+
+<!-- High-end -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
+<div class="card-content">
+<h3>High-End</h3>
 <div class="price">$7 / image</div>
 <ul>
-<li>Dodge & Burn</li>
-<li>Texture preservation</li>
+<li>Dodge and Burn</li>
+<li>Digital airbrushing</li>
 <li>Digital makeup</li>
-<li>Magazine-quality finish</li>
+<li>Sharpness & contrast</li>
+<li>Blemishes removal</li>
 </ul>
 <a href="#contact" class="btn">Get Quote</a>
 </div>
@@ -300,49 +385,72 @@ gap:50px;
 </div>
 </section>
 
-<section id="commitment">
-<h2>Our Commitment</h2>
-<div class="commitment">
-<p>We are committed to delivering consistent, high-quality retouching that enhances your images without losing their natural look. Every detail matters — from skin texture to color balance. We respect deadlines, maintain clear communication, and treat every project with professionalism and care. Your reputation is important to us, and we work as an extension of your creative team.</p>
+<!-- FEEDBACK -->
+<section>
+<h2>Client Feedback</h2>
+<div class="feedback">
+<div class="feedback-item">🇺🇸 Sarah M. – “Amazing retouching! Very natural and professional.”</div>
+<div class="feedback-item">🇺🇸 David R. – “Fast turnaround and consistent quality every time.”</div>
+<div class="feedback-item">🇺🇸 Jessica L. – “My go-to retoucher for all portrait sessions.”</div>
 </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
 <h2>FAQs</h2>
-<div class="faq-item"><strong>How long does delivery take?</strong><br>Standard turnaround is 24–48 hours depending on volume.</div>
-<div class="faq-item"><strong>Do you offer bulk discounts?</strong><br>Yes. Please contact us for custom pricing.</div>
-<div class="faq-item"><strong>Can you match my editing style?</strong><br>Absolutely. Send reference images and we will match your preferred look.</div>
+<div class="faq-item"><strong>How fast is delivery?</strong><br>24–48 hours depending on volume.</div>
+<div class="faq-item"><strong>Can you match my style?</strong><br>Yes, send reference images.</div>
+<div class="faq-item"><strong>Do you offer bulk discounts?</strong><br>Yes, contact for custom pricing.</div>
+<div class="faq-item"><strong>Do you work with international clients?</strong><br>Absolutely, worldwide service.</div>
+<div class="faq-item"><strong>Accepted payment methods?</strong><br>PayPal & bank transfer.</div>
+<div class="faq-item"><strong>Revision policy?</strong><br>Free minor revisions included.</div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <h2>Send Your Images & Get a Quote</h2>
-<p style="text-align:center;margin-bottom:30px;">We typically respond within 1 hour during business hours.</p>
+<p style="text-align:center;margin-bottom:20px;">
+Tell me about your project and how many images you have. I’ll reply with a clear quote and turnaround time.
+<br>Working hours: usually reply within a few working hours.
+</p>
 
 <form action="https://formspree.io/f/xbdagqon" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<input type="text" name="image_link" placeholder="Upload Link (Google Drive, WeTransfer, Dropbox...)">
+<input type="email" name="email" placeholder="Your Email / Contact" required>
 <select name="photo_type">
-<option>Select Service</option>
+<option>Select Photo Type</option>
+<option>Newborn</option>
 <option>Portrait</option>
 <option>Maternity</option>
-<option>High-End Beauty</option>
+<option>Model</option>
+<option>High-End</option>
 </select>
+<input type="text" name="image_link" placeholder="Image Link (Drive, Dropbox, WeTransfer...)">
 <textarea name="details" rows="5" placeholder="Project Details"></textarea>
 <button type="submit">Send Request</button>
 </form>
 </section>
 
+<!-- FLOAT -->
+<a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-insta">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="#contact" class="float-quote">
+<i class="fas fa-paper-plane"></i>
+</a>
+
+<!-- FOOTER -->
 <footer>
 <div class="footer-left">
 <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true">
-<p>Hi, I'm Hung — a professional retoucher with over 8 years of experience helping photographers elevate their work through clean, natural, and high-end editing.</p>
+<p>Professional retouching service helping photographers enhance beauty while maintaining natural texture and detail.</p>
 </div>
 
 <div class="footer-right">
 <h4>Contact</h4>
-<p>Email: sj.retoucher@gmail.com</p>
-<p>Instagram: @sj.retoucher</p>
+<p><i class="fas fa-envelope"></i> sj.retoucher@gmail.com</p>
+<p><i class="fab fa-instagram"></i> @sj.retoucher</p>
 </div>
 </footer>
 
@@ -358,4 +466,3 @@ slides.style.transform=`translateX(-${index*100}%)`;
 
 </body>
 </html>
-
