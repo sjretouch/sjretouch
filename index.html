@@ -436,7 +436,8 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <li>Lighting & brightness adjustment</li>
 <li>Match your retouching style</li>
 </ul>
-<a href="#contact" class="btn">Get Quote</a>
+<a href="#contact" class="btn quote-btn" data-type="Newborn and Basic">Get Quote</a>
+
 </div>
 </div>
 
@@ -452,7 +453,7 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <li>Objects removal</li>
 <li>Following Clients’ Style</li>
 </ul>
-<a href="#contact" class="btn">Get Quote</a>
+<a href="#contact" class="btn quote-btn" data-type="Portrait">Get Quote</a>
 </div>
 </div>
 
@@ -468,7 +469,7 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <li>Wrinkle removal</li>
 <li>Hair retouching</li>
 </ul>
-<a href="#contact" class="btn">Get Quote</a>
+<a href="#contact" class="btn quote-btn" data-type="Maternity">Get Quote</a>
 </div>
 </div>
 
@@ -484,7 +485,7 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <li>Background retouching</li>
 <li>Sharpness enhancement</li>
 </ul>
-<a href="#contact" class="btn">Get Quote</a>
+<a href="#contact" class="btn quote-btn" data-type="Model">Get Quote</a>
 </div>
 </div>
 
@@ -500,7 +501,7 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <li>Light & exposure levels</li>
 <li>Blemishes removal</li>
 </ul>
-<a href="#contact" class="btn">Get Quote</a>
+<a href="#contact" class="btn quote-btn" data-type="High-End">Get Quote</a>
 </div>
 </div>
 
@@ -520,12 +521,24 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <!-- FAQ -->
 <section id="faq">
 <h2>FAQs</h2>
-<div class="faq-item"><strong>Delivery time?</strong><br>24–48 hours depending on volume.</div>
-<div class="faq-item"><strong>Bulk discount?</strong><br>Yes, contact for custom pricing.</div>
-<div class="faq-item"><strong>Match my style?</strong><br>Absolutely.</div>
-<div class="faq-item"><strong>International clients?</strong><br>Yes, worldwide.</div>
-<div class="faq-item"><strong>Revisions?</strong><br>Minor revisions included.</div>
-<div class="faq-item"><strong>Payment methods?</strong><br>PayPal & bank transfer.</div>
+<div class="faq-item">
+    <div class="faq-question">Delivery time?</div>
+    <div class="faq-answer">24 hours depending on volume.</div>
+<div class="faq-item">
+    <div class="faq-question">Bulk discount?</div>
+    <div class="faq-answer">Yes, contact for custom pricing.</div>
+<div class="faq-item">
+    <div class="faq-question">Match my style?</div>
+    <div class="faq-answer">Absolutely.</div>
+<div class="faq-item">
+    <div class="faq-question">International clients?</div>
+    <div class="faq-answer">Yes, worldwide.</div>
+<div class="faq-item">
+    <div class="faq-question">Payment methods?</div>
+    <div class="faq-answer">PayPal & bank transfer.</div>
+<div class="faq-item">
+    <div class="faq-question">Revisions?</div>
+    <div class="faq-answer">Minor revisions included.</div>
 </section>
 
 <!-- CONTACT -->
@@ -543,7 +556,7 @@ Working hours: usually reply within a few working hours.
 
   <select name="photo_type" required>
     <option value="">Select Photo Type</option>
-    <option>Newborn</option>
+    <option>Newborn and Basic</option>
     <option>Portrait</option>
     <option>Maternity</option>
     <option>Model</option>
@@ -638,12 +651,25 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+<script>
+document.querySelectorAll(".quote-btn").forEach(button => {
+  button.addEventListener("click", function() {
+    const type = this.getAttribute("data-type");
+    const select = document.querySelector('select[name="photo_type"]');
+
+    if(select){
+      select.value = type;
+    }
+  });
+});
 </script>
+
 
 
 
 </body>
 </html>
+
 
 
 
