@@ -3,366 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SJ Photo | High-End Retouching Services</title>
+<title>SJ Photo | High-End Retouching</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0f0f0f;
-    color: #fff;
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
-a {
-    text-decoration: none;
-    color: inherit;
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:#fff;
+    background:#000;
+}
+
+/* BACKGROUND IMAGE */
+.bg-image{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://images.pexels.com/photos/2693208/pexels-photo-2693208.jpeg?auto=compress&w=1600') center/cover no-repeat;
+    filter:blur(8px) brightness(0.4);
+    z-index:-2;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.9));
+    z-index:-1;
 }
 
 /* HEADER */
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background: rgba(0,0,0,0.85);
-    padding: 20px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 999;
+header{
+    position:fixed;
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
 }
-header img {
-    height: 50px;
+
+header h2{
+    color:#d4af37;
+    font-weight:600;
 }
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 35px;
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:35px;
 }
-nav ul li a:hover {
-    color: #d4af37;
+
+nav a{
+    text-decoration:none;
+    color:#fff;
+    font-size:15px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+/* SECTION */
+section{
+    padding:120px 8% 80px 8%;
 }
 
 /* HERO */
 .hero{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 100vh;
-    padding-top: 80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:100vh;
 }
-.hero .text {
+
+.hero-text{
     flex:1;
-    padding-right:30px;
+    padding-right:40px;
 }
-.hero h1 {
-    font-size:48px;
+
+.hero-text h1{
+    font-size:52px;
+    background:linear-gradient(90deg,#d4af37,#f5d76e);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     margin-bottom:20px;
 }
-.hero p {
-    font-size:18px;
+
+.hero-text p{
     color:#ccc;
     margin-bottom:30px;
+    font-size:18px;
 }
-.btn-primary{
-    background: #d4af37;
-    color: black;
-    padding:15px 28px;
-    font-size:16px;
-    font-weight:600;
+
+.btn{
+    padding:15px 35px;
     border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#d4af37,#f5d76e);
+    color:#000;
+    font-weight:600;
     cursor:pointer;
+    box-shadow:0 0 20px rgba(212,175,55,0.5);
+    transition:0.3s;
 }
-.hero .slider{
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 30px rgba(212,175,55,0.8);
+}
+
+/* SLIDER */
+.slider{
     flex:1;
-    max-width:500px;
-    position:relative;
+    max-width:550px;
+    overflow:hidden;
+    border-radius:20px;
 }
-.hero .slider img{
+
+.slides{
+    display:flex;
+    width:300%;
+    animation:slide 12s infinite ease-in-out;
+}
+
+.slides img{
     width:100%;
-    border-radius:10px;
+    object-fit:cover;
+}
+
+@keyframes slide{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(0);}
+    33%{transform:translateX(-100%);}
+    58%{transform:translateX(-100%);}
+    66%{transform:translateX(-200%);}
+    91%{transform:translateX(-200%);}
+    100%{transform:translateX(0);}
 }
 
 /* SERVICES */
-.services{
+.services h2{
     text-align:center;
-}
-.card-container{
-    display:flex;
-    flex-wrap:wrap;
-    gap:25px;
-    justify-content:center;
-    margin-top:40px;
-}
-.card{
-    width:300px;
-    background:#111;
-    border-radius:12px;
-    padding:20px;
-    text-align:left;
-}
-.card img{
-    width:100%;
-    border-radius:8px;
-    margin-bottom:15px;
-}
-.card h3{
-    margin:0 0 10px;
+    margin-bottom:50px;
     color:#d4af37;
 }
-.card ul{
-    padding-left:15px;
-    font-size:14px;
-    color:#ddd;
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
 }
-.card .price{
-    margin:15px 0;
+
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(212,175,55,0.2);
+    border-radius:20px;
+    padding:25px;
+    transition:0.4s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border:1px solid #d4af37;
+    box-shadow:0 20px 40px rgba(212,175,55,0.3);
+}
+
+.card img{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.price{
     font-size:22px;
     font-weight:700;
-    color:#fff;
+    margin-bottom:15px;
+}
+
+.card ul{
+    font-size:14px;
+    color:#ddd;
+    padding-left:15px;
+}
+
+.highlight{
+    border:2px solid #d4af37;
+    background:rgba(212,175,55,0.08);
+    transform:scale(1.05);
 }
 
 /* FEEDBACK */
 .feedback{
     text-align:center;
 }
-.feedback .item{
-    background:#111;
-    padding:20px;
-    margin:15px auto;
-    width:80%;
-    border-radius:10px;
-    color:#ddd;
+
+.feedback h2{
+    color:#d4af37;
+    margin-bottom:40px;
+}
+
+.feedback-item{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-left:4px solid #d4af37;
+    padding:25px;
+    margin:20px auto;
+    width:70%;
+    border-radius:12px;
+    font-style:italic;
 }
 
 /* CONTACT */
-.contact{
+.contact h2{
     text-align:center;
+    color:#d4af37;
 }
-.contact form{
+
+.contact p{
+    text-align:center;
+    margin:15px 0;
+    color:#ccc;
+}
+
+form{
+    max-width:500px;
+    margin:30px auto;
     display:flex;
     flex-direction:column;
     gap:15px;
-    max-width:500px;
-    margin:30px auto;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(212,175,55,0.3);
 }
+
 input, textarea, select{
     padding:12px;
-    border: none;
+    border:none;
     border-radius:8px;
-    font-size:15px;
 }
+
 input:focus, textarea:focus, select:focus{
     outline:2px solid #d4af37;
 }
-.btn-submit{
-    background:#d4af37;
-    color:black;
-    padding:15px;
-    font-size:16px;
-    font-weight:600;
-    border:none;
-    cursor:pointer;
-}
 
 /* FLOATING BUTTONS */
-.float-btn{
+.float-instagram{
     position:fixed;
     bottom:25px;
     right:25px;
     background:#d4af37;
     padding:15px;
     border-radius:50%;
-    cursor:pointer;
-    box-shadow:0 3px 8px rgba(0,0,0,0.3);
-}
-.float-btn img{
-    width:30px;
-    height:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.5);
 }
 
-@media(max-width: 900px){
-    .hero {
+.float-instagram img{
+    width:28px;
+}
+
+.float-quote{
+    position:fixed;
+    bottom:25px;
+    right:90px;
+    background:#fff;
+    color:#000;
+    padding:12px 20px;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+    .card-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .hero{
         flex-direction:column;
         text-align:center;
     }
-    .hero .slider{
-        margin-top:25px;
-        max-width:80%;
+    .hero-text{
+        padding-right:0;
+        margin-bottom:40px;
     }
 }
+
+@media(max-width:700px){
+    .card-container{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<div class="bg-image"></div>
+
 <header>
-    <a href="#home"><img src="https://images.pexels.com/photos/5695800/pexels-photo-5695800.jpeg?auto=compress&w=200" alt="SJ Logo"></a>
+    <h2>SJ Photo</h2>
     <nav>
-      <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#feedback">Feedback</a></li>
-      <li><a href="#contact">Contact</a></li>
-      </ul>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 </header>
 
 <!-- HERO -->
 <section id="home" class="hero">
-    <div class="text">
-        <h1 class="gold">Welcome to SJ Photo</h1>
-        <p>We are the best choice to help you increase the attraction to your product & portraits.</p>
-        <button class="btn-primary" onclick="scrollToForm()">Try Free Now</button>
+    <div class="hero-text">
+        <h1>Welcome to SJ Photo</h1>
+        <p>We are the best choice to help you increase the attraction to your product.</p>
+        <button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Try Free Now</button>
     </div>
+
     <div class="slider">
-        <img id="heroImg" src="https://images.pexels.com/photos/3993214/pexels-photo-3993214.jpeg?auto=compress&w=800" alt="Before After">
+        <div class="slides">
+            <img src="https://images.pexels.com/photos/3993214/pexels-photo-3993214.jpeg?auto=compress&w=900">
+            <img src="https://images.pexels.com/photos/3552413/pexels-photo-3552413.jpeg?auto=compress&w=900">
+            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=900">
+        </div>
     </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="services">
-    <h2 class="gold">Our Services & Pricing</h2>
+<h2>Services & Pricing</h2>
 
-    <div class="card-container">
+<div class="card-container">
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/3661272/pexels-photo-3661272.jpeg?auto=compress&w=800" alt="Newborn">
-            <h3>Newborn & Basic</h3>
-            <div class="price">$2</div>
-            <ul>
-                <li>Background Removal</li>
-                <li>Eyes & face retouching</li>
-                <li>Color correction</li>
-                <li>Baby skin smoothing & toning</li>
-                <li>Modify expressions & liquify</li>
-                <li>Remove unwanted elements</li>
-                <li>Lighting & brightness</li>
-                <li>Match your style</li>
-            </ul>
-        </div>
+<div class="card">
+<img src="https://images.pexels.com/photos/3661272/pexels-photo-3661272.jpeg?auto=compress&w=800">
+<h3>Newborn & Basic</h3>
+<div class="price">$2</div>
+<ul>
+<li>Background Removal</li>
+<li>Eyes and face retouching</li>
+<li>Color correction</li>
+<li>Baby skin smoothing</li>
+<li>Modify expressions</li>
+<li>Remove unwanted elements</li>
+</ul>
+</div>
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&w=800" alt="Portrait">
-            <h3>Portrait</h3>
-            <div class="price">$4</div>
-            <ul>
-                <li>Skin retouching</li>
-                <li>Body/face liquefy</li>
-                <li>Color correction</li>
-                <li>Clothes fixes</li>
-                <li>Hair retouching</li>
-                <li>Masking & objects removal</li>
-                <li>Background enhancement</li>
-            </ul>
-        </div>
+<div class="card">
+<img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&w=800">
+<h3>Portrait</h3>
+<div class="price">$4</div>
+<ul>
+<li>Skin retouching</li>
+<li>Liquefy</li>
+<li>Color correction</li>
+<li>Hair retouching</li>
+<li>Background enhancement</li>
+</ul>
+</div>
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/3760286/pexels-photo-3760286.jpeg?auto=compress&w=800" alt="Maternity">
-            <h3>Maternity</h3>
-            <div class="price">$4</div>
-            <ul>
-                <li>Color correction</li>
-                <li>Face beauty retouch</li>
-                <li>Hair retouching</li>
-                <li>Skin tone smoothing</li>
-                <li>Remove defects</li>
-                <li>Eyes expressive</li>
-                <li>Teeth whitening</li>
-                <li>Eliminate wrinkles</li>
-            </ul>
-        </div>
+<div class="card">
+<img src="https://images.pexels.com/photos/3760286/pexels-photo-3760286.jpeg?auto=compress&w=800">
+<h3>Maternity</h3>
+<div class="price">$4</div>
+<ul>
+<li>Face beauty retouch</li>
+<li>Hair retouching</li>
+<li>Skin smoothing</li>
+<li>Teeth whitening</li>
+<li>Wrinkle removal</li>
+</ul>
+</div>
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&w=800" alt="Model">
-            <h3>Model</h3>
-            <div class="price">$4</div>
-            <ul>
-                <li>Skin softening & toning</li>
-                <li>Body slimming/liquefy</li>
-                <li>Color correction</li>
-                <li>Whiten eyes/teeth</li>
-                <li>Sharpening & contrast</li>
-                <li>Skin imperfection removal</li>
-            </ul>
-        </div>
+<div class="card">
+<img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&w=800">
+<h3>Model</h3>
+<div class="price">$4</div>
+<ul>
+<li>Skin softening</li>
+<li>Color correction</li>
+<li>Whiten teeth</li>
+<li>Body slimming</li>
+<li>Sharpening</li>
+</ul>
+</div>
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=800" alt="High-End">
-            <h3>High-End</h3>
-            <div class="price">$7</div>
-            <ul>
-                <li>High-end skin retouching</li>
-                <li>Dodge & burn</li>
-                <li>Digital airbrushing</li>
-                <li>Digital makeup</li>
-                <li>Body/face reshaping</li>
-                <li>Hair retouching</li>
-                <li>Contrast & exposure</li>
-                <li>Flaw removal</li>
-            </ul>
-        </div>
+<div class="card highlight">
+<img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=800">
+<h3>High-End</h3>
+<div class="price">$7</div>
+<ul>
+<li>High-end skin retouching</li>
+<li>Dodge and Burn</li>
+<li>Digital makeup</li>
+<li>Body reshaping</li>
+<li>Flaw removal</li>
+</ul>
+</div>
 
-    </div>
+</div>
 </section>
 
 <!-- FEEDBACK -->
 <section id="feedback" class="feedback">
-    <h2 class="gold">Customer Feedback</h2>
-
-    <div class="item">“Absolutely amazing work! My photos look magazine-level.” — Sarah J.</div>
-    <div class="item">“Perfect skin retouch and color tone. Fast and professional.” — Mark L.</div>
-    <div class="item">“SJ understood my style perfectly. I’ll use again!” — Emily R.</div>
+<h2>Client Feedback</h2>
+<div class="feedback-item">“Absolutely amazing work! My photos look magazine-ready.”</div>
+<div class="feedback-item">“Fast turnaround and perfect skin retouch.”</div>
+<div class="feedback-item">“SJ matched my style exactly. Highly recommended!”</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-    <h2 class="gold">Send Your Images & Get a Quote</h2>
-    <p>Tell me about your project and how many images you have. I’ll reply with a clear quote and turnaround time.</p>
+<h2>Send Your Images & Get a Quote</h2>
+<p>Tell me about your project and how many images you have. I’ll reply with a clear quote and turnaround time.</p>
 
-    <form action="https://formspree.io/f/xbdagqon" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Email / Contact" required>
-        <select name="type" required>
-            <option value="">Photo Type</option>
-            <option>Newborn</option>
-            <option>Portrait</option>
-            <option>Maternity</option>
-            <option>Model</option>
-            <option>High-End</option>
-        </select>
-        <input type="text" name="imagelink" placeholder="Image Link (Google Drive / Dropbox)">
-        <textarea name="details" rows="4" placeholder="Project Details"></textarea>
-        <button type="submit" class="btn-submit">Send Request</button>
-    </form>
+<form action="https://formspree.io/f/xbdagqon" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Email / Contact" required>
+<select name="type">
+<option>Newborn</option>
+<option>Portrait</option>
+<option>Maternity</option>
+<option>Model</option>
+<option>High-End</option>
+</select>
+<input type="text" name="imagelink" placeholder="Image Link">
+<textarea name="details" rows="4" placeholder="Project Details"></textarea>
+<button class="btn">Send Request</button>
+</form>
 
-    <p>Email: sj.retoucher@gmail.com</p>
-    <p>Instagram: @sj.retoucher</p>
-    <p>Working Hours: Usually reply within a few working hours</p>
+<p>Email: sj.retoucher@gmail.com</p>
+<p>Instagram: @sj.retoucher</p>
+<p>Working hours: Usually reply within a few working hours.</p>
 </section>
 
-<!-- FLOATING BUTTONS -->
-<a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-btn">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+<a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-instagram">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
 </a>
 
-<script>
-function scrollToForm(){
-    document.querySelector('#contact').scrollIntoView({behavior:'smooth'});
-}
-// HERO IMG AUTO SLIDER
-let heroImgs = [
-    "https://images.pexels.com/photos/3993214/pexels-photo-3993214.jpeg?auto=compress&w=800",
-    "https://images.pexels.com/photos/3552413/pexels-photo-3552413.jpeg?auto=compress&w=800",
-    "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=800"
-];
-let idx=0;
-setInterval(()=>{
-    idx = (idx+1) % heroImgs.length;
-    document.getElementById('heroImg').src = heroImgs[idx];
-},3000);
-</script>
+<a href="#contact" class="float-quote">Get a Quote</a>
 
 </body>
 </html>
