@@ -381,6 +381,34 @@ transition:.3s;
 transform:translateY(-3px);
 box-shadow:0 0 15px rgba(255,215,0,.6);
 }
+.faq-question{
+  font-weight:600;
+  cursor:pointer;
+  position:relative;
+}
+
+.faq-question::after{
+  content:"+";
+  position:absolute;
+  right:10px;
+  transition:.3s;
+}
+
+.faq-item.active .faq-question::after{
+  content:"-";
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+  opacity:.8;
+  margin-top:10px;
+}
+
+.faq-item.active .faq-answer{
+  max-height:200px;
+}
 
 </style>
 </head>
@@ -652,6 +680,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 <script>
+<script>
 document.querySelectorAll(".quote-btn").forEach(button => {
   button.addEventListener("click", function() {
     const type = this.getAttribute("data-type");
@@ -663,12 +692,9 @@ document.querySelectorAll(".quote-btn").forEach(button => {
   });
 });
 </script>
-
-
-
-
 </body>
 </html>
+
 
 
 
