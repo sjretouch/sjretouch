@@ -3,34 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SJ Photo | High-End Retouching Studio</title>
+<title>SJ Photo | Professional Retouching</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    color:#fff;
-    background:#000;
-}
-
-/* ===== BACKGROUND IMAGE ===== */
-.bg-image{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&w=1920') center/cover no-repeat;
-    filter:blur(10px) brightness(0.35);
-    z-index:-2;
+    color:white;
+    background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1920') no-repeat center center/cover;
+    background-attachment:fixed;
 }
 
 body::before{
@@ -38,438 +31,367 @@ body::before{
     position:fixed;
     width:100%;
     height:100%;
-    background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.95));
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(6px);
     z-index:-1;
 }
 
-/* ===== HEADER ===== */
-header{
-    position:fixed;
-    width:100%;
-    padding:18px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,0,0,0.85);
-    backdrop-filter:blur(10px);
-    z-index:1000;
-}
-
-.logo img{
-    height:55px;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:35px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#fff;
-    font-size:15px;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:#d4af37;
-}
-
-/* ===== SECTIONS ===== */
 section{
-    padding:120px 8% 80px;
+    padding:80px 10%;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:60px;
     min-height:100vh;
 }
 
 .hero-text{
-    flex:1;
-    padding-right:40px;
+    max-width:600px;
 }
 
 .hero-text h1{
-    font-size:52px;
-    background:linear-gradient(90deg,#d4af37,#f5d76e);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:20px;
+    font-size:48px;
+    color:#ffd700;
 }
 
 .hero-text p{
-    color:#ccc;
-    margin-bottom:30px;
+    margin:20px 0;
     font-size:18px;
+    opacity:0.9;
 }
 
-.btn{
-    padding:15px 35px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#d4af37,#f5d76e);
-    color:#000;
+.btn-gold{
+    display:inline-block;
+    padding:12px 30px;
+    background:linear-gradient(45deg,#ffd700,#b8860b);
+    color:black;
+    border-radius:30px;
     font-weight:600;
-    cursor:pointer;
-    box-shadow:0 0 20px rgba(212,175,55,0.5);
+    text-decoration:none;
     transition:0.3s;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 30px rgba(212,175,55,0.8);
+.btn-gold:hover{
+    transform:scale(1.05);
 }
 
-/* ===== HERO SLIDER ===== */
+/* HERO SLIDER 4x5 */
 .slider{
-    flex:1;
-    max-width:550px;
+    position:relative;
+    width:350px;
+    aspect-ratio:4/5;
     overflow:hidden;
     border-radius:20px;
+    box-shadow:0 0 30px rgba(255,215,0,0.5);
 }
 
-.slides{
-    display:flex;
-    width:300%;
-    animation:slide 12s infinite ease-in-out;
-}
-
-.slides img{
+.slide{
+    position:absolute;
     width:100%;
+    height:100%;
     object-fit:cover;
+    opacity:0;
+    transition:opacity 1.2s ease-in-out;
 }
 
-@keyframes slide{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(0);}
-    33%{transform:translateX(-100%);}
-    58%{transform:translateX(-100%);}
-    66%{transform:translateX(-200%);}
-    91%{transform:translateX(-200%);}
-    100%{transform:translateX(0);}
+.slide.active{
+    opacity:1;
 }
 
-/* ===== SERVICES ===== */
-.services h2{
+/* SECTION TITLE */
+.section-title{
     text-align:center;
+    font-size:36px;
+    color:#ffd700;
     margin-bottom:50px;
-    color:#d4af37;
 }
 
-.card-container{
+/* PRICING */
+.pricing-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:30px;
+    margin-bottom:30px;
+}
+
+.pricing-grid.bottom{
+    grid-template-columns:repeat(2,1fr);
+    max-width:900px;
+    margin:0 auto;
 }
 
 .card{
     background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(212,175,55,0.2);
+    border:1px solid rgba(255,215,0,0.4);
     border-radius:20px;
-    padding:25px;
-    transition:0.4s;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
 }
 
 .card:hover{
     transform:translateY(-10px);
-    border:1px solid #d4af37;
-    box-shadow:0 20px 40px rgba(212,175,55,0.3);
+    box-shadow:0 0 25px rgba(255,215,0,0.4);
 }
 
-.card img{
+/* IMAGE 4x5 */
+.card-img{
     width:100%;
-    border-radius:12px;
-    margin-bottom:15px;
+    aspect-ratio:4/5;
+    overflow:hidden;
+}
+
+.card-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.card:hover .card-img img{
+    transform:scale(1.1);
+}
+
+.card-content{
+    padding:25px;
 }
 
 .card h3{
-    color:#d4af37;
+    color:#ffd700;
     margin-bottom:10px;
 }
 
 .price{
-    font-size:22px;
-    font-weight:700;
+    font-size:26px;
     margin-bottom:15px;
 }
 
 .card ul{
+    list-style:none;
     font-size:14px;
-    color:#ddd;
-    padding-left:18px;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
-.highlight{
-    border:2px solid #d4af37;
-    background:rgba(212,175,55,0.08);
-    transform:scale(1.05);
+.card ul li{
+    margin-bottom:8px;
 }
 
-/* ===== CONTACT ===== */
-.contact h2{
-    text-align:center;
-    color:#d4af37;
-}
-
-.contact p{
-    text-align:center;
-    margin:15px 0;
-    color:#ccc;
-}
-
+/* FORM */
 form{
-    max-width:500px;
-    margin:30px auto;
+    max-width:600px;
+    margin:0 auto;
     display:flex;
     flex-direction:column;
     gap:15px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(15px);
-    padding:30px;
-    border-radius:20px;
-    border:1px solid rgba(212,175,55,0.3);
 }
 
-input, textarea, select{
+form input, form select, form textarea{
+    padding:12px;
+    border-radius:10px;
+    border:none;
+}
+
+form button{
     padding:12px;
     border:none;
-    border-radius:8px;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ffd700,#b8860b);
+    font-weight:600;
+    cursor:pointer;
 }
 
-input:focus, textarea:focus, select:focus{
-    outline:2px solid #d4af37;
-}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
-    background:rgba(0,0,0,0.95);
-    padding:60px 8%;
+    background:rgba(0,0,0,0.85);
+    padding:60px 10%;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
-    border-top:1px solid rgba(212,175,55,0.3);
-}
-
-.footer-left{
-    max-width:400px;
+    gap:40px;
 }
 
 .footer-left img{
-    height:70px;
-    margin-bottom:15px;
+    width:120px;
+    margin-bottom:20px;
 }
 
 .footer-left p{
-    color:#ccc;
+    max-width:400px;
     line-height:1.6;
+    opacity:0.85;
+}
+
+.footer-right h4{
+    color:#ffd700;
+    margin-bottom:15px;
 }
 
 .footer-right p{
     margin-bottom:10px;
 }
 
-.footer-right span{
-    color:#d4af37;
-}
-
-/* ===== FLOAT BUTTONS ===== */
-.float-instagram{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#d4af37;
-    padding:15px;
-    border-radius:50%;
-}
-
-.float-instagram img{
-    width:28px;
-}
-
-.float-quote{
-    position:fixed;
-    bottom:25px;
-    right:90px;
-    background:#fff;
-    color:#000;
-    padding:12px 20px;
-    border-radius:50px;
-    font-weight:600;
-    text-decoration:none;
-}
-
-/* RESPONSIVE */
 @media(max-width:1000px){
-    .card-container{grid-template-columns:repeat(2,1fr);}
-    .hero{flex-direction:column;text-align:center;}
-    .hero-text{padding-right:0;margin-bottom:40px;}
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+    .pricing-grid,
+    .pricing-grid.bottom{
+        grid-template-columns:1fr;
+    }
 }
-
-@media(max-width:700px){
-    .card-container{grid-template-columns:1fr;}
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="bg-image"></div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Welcome to SJphoto</h1>
+        <p>We are the best choice to help you increase the attraction to your product.</p>
+        <a href="#quote" class="btn-gold">Try Free Now</a>
+    </div>
 
-<header>
-<div class="logo">
-<img src="sj-logo.png" alt="SJ Logo">
-</div>
-<nav>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
-
-<section id="home" class="hero">
-<div class="hero-text">
-<h1>Welcome to SJ Photo</h1>
-<p>We are the best choice to help you increase the attraction to your product.</p>
-<button class="btn" onclick="scrollAndSelect('Newborn')">Try Free Now</button>
-</div>
-
-<div class="slider">
-<div class="slides">
-<img src="https://images.pexels.com/photos/3993214/pexels-photo-3993214.jpeg?auto=compress&w=900">
-<img src="https://images.pexels.com/photos/3552413/pexels-photo-3552413.jpeg?auto=compress&w=900">
-<img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=900">
-</div>
-</div>
+    <div class="slider">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600" class="slide active">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600" class="slide">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600" class="slide">
+    </div>
 </section>
 
-<section id="services" class="services">
-<h2>Services & Pricing</h2>
+<!-- SERVICES -->
+<section>
+<h2 class="section-title">Our Services</h2>
 
-<div class="card-container">
+<div class="pricing-grid">
 
+<!-- NEWBORN -->
 <div class="card">
-<img src="https://images.pexels.com/photos/3661272/pexels-photo-3661272.jpeg?auto=compress&w=800">
+<div class="card-img">
+<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600">
+</div>
+<div class="card-content">
 <h3>Newborn & Basic</h3>
 <div class="price">$2</div>
-<ul>
-<li>Background Removal</li>
-<li>Eyes and face retouching</li>
-<li>Color correction</li>
-<li>Baby skin smoothing</li>
-</ul>
-<button class="btn" onclick="scrollAndSelect('Newborn')">Choose Plan</button>
+<button class="btn-gold" onclick="selectType('Newborn & Basic')">Get Quote</button>
+</div>
 </div>
 
+<!-- PORTRAIT -->
 <div class="card">
-<img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&w=800">
+<div class="card-img">
+<img src="https://images.unsplash.com/photo-1502767089025-6572583495b4?w=600">
+</div>
+<div class="card-content">
 <h3>Portrait</h3>
 <div class="price">$4</div>
-<ul>
-<li>Skin retouching</li>
-<li>Color correction</li>
-<li>Hair retouching</li>
-</ul>
-<button class="btn" onclick="scrollAndSelect('Portrait')">Choose Plan</button>
+<button class="btn-gold" onclick="selectType('Portrait')">Get Quote</button>
+</div>
 </div>
 
+<!-- MATERNITY -->
 <div class="card">
-<img src="https://images.pexels.com/photos/3760286/pexels-photo-3760286.jpeg?auto=compress&w=800">
+<div class="card-img">
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600">
+</div>
+<div class="card-content">
 <h3>Maternity</h3>
 <div class="price">$4</div>
-<ul>
-<li>Face beauty retouch</li>
-<li>Teeth whitening</li>
-<li>Wrinkle removal</li>
-</ul>
-<button class="btn" onclick="scrollAndSelect('Maternity')">Choose Plan</button>
+<button class="btn-gold" onclick="selectType('Maternity')">Get Quote</button>
+</div>
 </div>
 
+</div>
+
+<div class="pricing-grid bottom">
+
+<!-- MODEL -->
 <div class="card">
-<img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&w=800">
+<div class="card-img">
+<img src="https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?w=600">
+</div>
+<div class="card-content">
 <h3>Model</h3>
 <div class="price">$4</div>
-<ul>
-<li>Skin softening</li>
-<li>Body slimming</li>
-<li>Sharpening</li>
-</ul>
-<button class="btn" onclick="scrollAndSelect('Model')">Choose Plan</button>
+<button class="btn-gold" onclick="selectType('Model')">Get Quote</button>
+</div>
 </div>
 
-<div class="card highlight">
-<img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=800">
+<!-- HIGH END -->
+<div class="card">
+<div class="card-img">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600">
+</div>
+<div class="card-content">
 <h3>High-End</h3>
 <div class="price">$7</div>
-<ul>
-<li>High-end skin retouching</li>
-<li>Dodge and Burn</li>
-<li>Digital makeup</li>
-</ul>
-<button class="btn" onclick="scrollAndSelect('High-End')">Choose Premium</button>
+<button class="btn-gold" onclick="selectType('High-End')">Get Quote</button>
+</div>
 </div>
 
 </div>
 </section>
 
-<section id="contact" class="contact">
-<h2>Send Your Images & Get a Quote</h2>
-<p>Tell me about your project and how many images you have. I’ll reply with a clear quote and turnaround time.</p>
+<!-- QUOTE -->
+<section id="quote">
+<h2 class="section-title">Send your images & get a quote</h2>
 
 <form action="https://formspree.io/f/xbdagqon" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Email / Contact" required>
-<select name="type" id="photoType">
-<option>Newborn</option>
+<input type="email" name="email" placeholder="Your Email" required>
+
+<select name="photo_type" id="photoType">
+<option value="">Select Photo Type</option>
+<option>Newborn & Basic</option>
 <option>Portrait</option>
 <option>Maternity</option>
 <option>Model</option>
 <option>High-End</option>
 </select>
-<input type="text" name="imagelink" placeholder="Image Link">
-<textarea name="details" rows="4" placeholder="Project Details"></textarea>
-<button class="btn">Send Request</button>
-</form>
 
-<p>📧 sj.retoucher@gmail.com</p>
-<p>📷 @sj.retoucher</p>
-<p>⏱ Usually reply within a few working hours.</p>
+<input type="text" name="image_link" placeholder="Image Link (Drive/Dropbox)">
+<textarea name="details" rows="5" placeholder="Project Details"></textarea>
+
+<button type="submit">Send Request</button>
+</form>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <div class="footer-left">
-<img src="sj-logo.png">
-<p><strong>SJ Photo</strong> is a professional retouching studio specializing in beauty, fashion and commercial photography.  
-With precision, natural skin preservation, and attention to micro-details, we transform images into magazine-ready visuals while maintaining authenticity.</p>
+<img src="YOUR_LOGO.png">
+<p>
+Hi, I'm Hung — a professional retoucher with 8+ years of experience.
+I specialize in delivering natural, high-end retouching for photographers worldwide.
+My goal is simple: clean, elegant, and market-ready images.
+</p>
 </div>
 
 <div class="footer-right">
-<p><span>📧 Email:</span> sj.retoucher@gmail.com</p>
-<p><span>📷 Instagram:</span> @sj.retoucher</p>
-<p><span>⏰ Working Hours:</span> Reply within a few hours</p>
+<h4>Contact</h4>
+<p>Email: sj.retoucher@gmail.com</p>
+<p>Instagram: @sj.retoucher</p>
+<p>Working hours: Usually reply within a few working hours.</p>
 </div>
 </footer>
 
-<a href="https://www.instagram.com/sj.retoucher/" target="_blank" class="float-instagram">
-<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-</a>
-
-<a href="#contact" class="float-quote">Get a Quote</a>
-
 <script>
-function scrollAndSelect(type){
-document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-document.getElementById('photoType').value = type;
+let slides=document.querySelectorAll(".slide");
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},3000);
+
+function selectType(type){
+document.getElementById("photoType").value=type;
+document.getElementById("quote").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
