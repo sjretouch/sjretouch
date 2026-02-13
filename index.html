@@ -693,106 +693,163 @@ Working hours: usually reply within a few working hours.
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const form = document.getElementById("quote-form");
-  const status = document.getElementById("form-status");
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    status.style.color = "#333";
-    status.innerHTML = "Sending...";
-
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/xbdagqon", {
-        method: "POST",
-        body: data,
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-
-      if (response.ok) {
-        status.style.color = "green";
-        status.innerHTML = "Thank you! Your message has been sent successfully.";
-        form.reset();
-      } else {
-        status.style.color = "red";
-        status.innerHTML = "Oops! Something went wrong. Please try again.";
-      }
-
-    } catch (error) {
-      status.style.color = "red";
-      status.innerHTML = "Network error. Please try again.";
-    }
-  });
-
-});
-<script>
 document.addEventListener("DOMContentLoaded", function(){
 
-  /* ===== FORM AJAX ===== */
-  const form = document.getElementById("quote-form");
-  const status = document.getElementById("form-status");
+/* =======================================================
+   HERO SLIDER
+======================================================= */
 
-  if(form){
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+const slider = document.querySelector(".slides");
+const slides = document.querySelectorAll(".slides img");
+const dotsContainer = document.querySelector(".dots");
+let currentIndex = 0;
+let sliderInterval;
 
-      status.style.color = "#333";
-      status.innerHTML = "Sending...";
+if(slider && slides.length > 0){
 
-      const data = new FormData(form);
-
-      try {
-        const response = await fetch("https://formspree.io/f/xbdagqon", {
-          method: "POST",
-          body: data,
-          headers: { "Accept": "application/json" }
-        });
-
-        if (response.ok) {
-          status.style.color = "green";
-          status.innerHTML = "Thank you! Your message has been sent successfully.";
-          form.reset();
-        } else {
-          status.style.color = "red";
-          status.innerHTML = "Oops! Something went wrong.";
-        }
-      } catch (error) {
-        status.style.color = "red";
-        status.innerHTML = "Network error. Please try again.";
-      }
+  function updateSlider(){
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelectorAll(".dot").forEach((dot,i)=>{
+      dot.classList.toggle("active", i === currentIndex);
     });
   }
 
-  /* ===== FAQ ACCORDION ===== */
-  const questions = document.querySelectorAll(".faq-question");
+  function nextSlide(){
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlider();
+  }
 
-  questions.forEach(question => {
-    question.addEventListener("click", function(){
+  function prevSlide(){
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateSlider();
+  }
 
-      const item = this.parentElement;
+  function startAuto(){
+    sliderInterval = setInterval(nextSlide, 4000);
+  }
 
-      document.querySelectorAll(".faq-item").forEach(i => {
-        if(i !== item){
-          i.classList.remove("active");
-        }
+  function stopAuto(){
+    clearInterval(sliderInterval);
+  }
+
+  if(dotsContainer){
+    slides.forEach((_,i)=>{
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if(i === 0) dot.classList.add("active");
+      dot.addEventListener("click", ()=>{
+        currentIndex = i;
+        updateSlider();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  const sliderWrapper = document.querySelector(".slider");
+  if(sliderWrapper){
+    sliderWrapper.addEventListener("mouseenter", stopAuto);
+    sliderWrapper.addEventListener("mouseleave", startAuto);
+  }
+
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
+
+  if(nextBtn) nextBtn.addEventListener("click", nextSlide);
+  if(prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+  startAuto();
+}
+
+
+/* =======================================================
+   SERVICES → AUTO SELECT PHOTO TYPE
+======================================================= */
+
+document.querySelectorAll(".quote-btn").forEach(button => {
+  button.addEventListener("click", function(){
+    const type = this.getAttribute("data-type");
+    const select = document.querySelector('select[name="photo_type"]');
+    if(select){
+      select.value = type;
+    }
+  });
+});
+
+
+/* =======================================================
+   FORM AJAX (Formspree)
+======================================================= */
+
+const form = document.getElementById("quote-form");
+const status = document.getElementById("form-status");
+
+if(form){
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    if(status){
+      status.style.color = "#fff";
+      status.innerHTML = "Sending...";
+    }
+
+    try{
+      const response = await fetch("https://formspree.io/f/xbdagqon", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
       });
 
-      item.classList.toggle("active");
+      if(response.ok){
+        if(status){
+          status.style.color = "#00ff88";
+          status.innerHTML = "✓ Request sent successfully. I will reply within 1 hour.";
+        }
+        form.reset();
+      }else{
+        if(status){
+          status.style.color = "red";
+          status.innerHTML = "Something went wrong. Please try again.";
+        }
+      }
 
-    });
+    }catch(error){
+      if(status){
+        status.style.color = "red";
+        status.innerHTML = "Network error. Please try again.";
+      }
+    }
   });
+
+}
+
+
+/* =======================================================
+   FAQ ACCORDION (ONLY ONE OPEN)
+======================================================= */
+
+document.querySelectorAll(".faq-question").forEach(question=>{
+  question.addEventListener("click", function(){
+
+    const item = this.parentElement;
+
+    document.querySelectorAll(".faq-item").forEach(i=>{
+      if(i !== item){
+        i.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+  });
+});
 
 });
 </script>
 
+
 </body>
 </html>
+
 
 
 
