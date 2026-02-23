@@ -246,18 +246,15 @@ display:flex;
 flex-direction:column;
 gap:15px;
 }
-form input,form select,form textarea{
-padding:12px;
-border-radius:10px;
-border:none;
+form input,
+form select,
+form textarea {
+  width: 100%;
+  margin-bottom: 15px;
 }
-form button{
-padding:14px;
-border:none;
-border-radius:30px;
-background:linear-gradient(45deg,#ffd700,#b8860b);
-font-weight:600;
-cursor:pointer;
+
+form button {
+  width: 100%;
 }
 
 /* FLOAT */
@@ -287,10 +284,12 @@ gap:50px;
 .footer-right h4{color:#ffd700;margin-bottom:15px;}
 .footer-right p{margin-bottom:10px;}
 
-@media(max-width:1100px){
-.hero{flex-direction:column;text-align:center;}
-.grid{grid-template-columns:1fr;}
-.feedback{grid-template-columns:1fr;}
+@media (max-width: 992px) {
+  .btn,
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
 }
     /* ===== PREMIUM FOOTER ===== */
 
@@ -455,7 +454,126 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 .faq-item.active .faq-answer{
   max-height:200px;
 }
+/* ============================= */
+/* MOBILE RESPONSIVE CLEAN FIX   */
+/* ============================= */
 
+@media (max-width: 992px) {
+
+  /* HEADER */
+  header {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 8px 10px;
+    font-size: 14px;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  /* SLIDER */
+  .slider-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .slider {
+    height: auto;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+  }
+  .slider-container {
+  max-width: 100%;
+  overflow: hidden;
+  }
+  /* SERVICES */
+  .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  .service-card {
+    width: 100%;
+  }
+
+  /* SERVICE IMAGES */
+  .service-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* FEEDBACK */
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FAQ */
+  .faq-container {
+    width: 100%;
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  .footer-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-divider {
+    width: 60%;
+    height: 1px;
+    margin: 20px auto;
+  }
+
+  /* FLOAT BUTTONS */
+  .floating-buttons {
+    right: 15px;
+    bottom: 15px;
+  }
+}
 </style>
 </head>
 
@@ -849,6 +967,7 @@ document.querySelectorAll(".faq-question").forEach(question=>{
 
 </body>
 </html>
+
 
 
 
