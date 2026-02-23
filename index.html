@@ -53,13 +53,21 @@ margin:15px auto 0;
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,215,0,0.2);
+  background: transparent;   /* trong suốt ban đầu */
   transition: all 0.4s ease;
   z-index: 1000;
 }
 
+/* Khi scroll */
+.main-header.scrolled {
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+.main-header {
+  transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
 .main-header.shrink {
   padding: 5px 0;
   background: rgba(0,0,0,0.95);
@@ -1313,14 +1321,15 @@ if(form){
 
 /* SHRINK HEADER */
 window.addEventListener("scroll", ()=>{
-  document.querySelector(".main-header")
-  ?.classList.toggle("shrink", window.scrollY > 80);
+  const header = document.querySelector(".main-header");
+  header.classList.toggle("scrolled", window.scrollY > 50);
 });
 
 });
 </script>
 </body>
    
+
 
 
 
