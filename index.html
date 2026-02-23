@@ -356,17 +356,6 @@ border-radius:20px;
   content:"−";
 }
 
-.faq-answer{
-  display:none;
-  margin-top:15px;
-  opacity:.8;
-}
-
-.faq-item.active .faq-answer{
-  display:block;
-}
-
-
 /* CONTACT */
 form{
 max-width:600px;
@@ -570,14 +559,6 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 
 .faq-item.active .faq-question::after{
   content:"-";
-}
-
-.faq-answer{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .4s ease;
-  opacity:.8;
-  margin-top:10px;
 }
 
 .faq-item.active .faq-answer{
@@ -854,7 +835,50 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
     background:#ffd700;
     opacity:1;
   }
+/* ============================= */
+/* CLEAN FAQ ACCORDION */
+/* ============================= */
 
+.faq-item{
+  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:15px;
+  border:1px solid rgba(255,215,0,.15);
+  transition:.3s;
+  overflow:hidden;
+}
+
+.faq-question{
+  font-weight:600;
+  cursor:pointer;
+  position:relative;
+  padding-right:25px;
+}
+
+.faq-question::after{
+  content:"+";
+  position:absolute;
+  right:0;
+  font-size:20px;
+  transition:.3s;
+}
+
+.faq-item.active .faq-question::after{
+  content:"−";
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+  opacity:.8;
+}
+
+.faq-item.active .faq-answer{
+  max-height:200px;
+  margin-top:15px;
+}
 }
 </style>
 </head>
@@ -1242,27 +1266,6 @@ if(form){
 }
 
 
-/* =======================================================
-   FAQ ACCORDION (ONLY ONE OPEN)
-======================================================= */
-
-document.querySelectorAll(".faq-question").forEach(question=>{
-  question.addEventListener("click", function(){
-
-    const item = this.parentElement;
-
-    document.querySelectorAll(".faq-item").forEach(i=>{
-      if(i !== item){
-        i.classList.remove("active");
-      }
-    });
-
-    item.classList.toggle("active");
-  });
-});
-
-});
-<script>
 /* SHRINK HEADER */
 window.addEventListener("scroll", function(){
   const header = document.querySelector(".main-header");
@@ -1405,10 +1408,31 @@ document.addEventListener("DOMContentLoaded", function(){
   updateActive();
 
 });
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item=>{
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", ()=>{
+      const isActive = item.classList.contains("active");
+
+      faqItems.forEach(i=>i.classList.remove("active"));
+
+      if(!isActive){
+        item.classList.add("active");
+      }
+    });
+  });
+
+});
 </script>
 
 </body>
 </html>
+
 
 
 
