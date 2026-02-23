@@ -689,49 +689,37 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
    body{
   transition: opacity .3s ease;
 }
-   /* ===== MOBILE HERO FIX ===== */
+  /* ===== MOBILE HERO + SLIDER FIX FINAL ===== */
 @media (max-width: 768px){
 
   .hero{
     flex-direction: column;
-    padding-top: 120px;
-    gap: 30px;
+    padding: 120px 20px 40px;
+    gap: 25px;
+    min-height: auto;   /* QUAN TRỌNG */
   }
 
   .slider{
-  width:100%;
-  max-width:1060px;
-  aspect-ratio: 16/9;
-  overflow:hidden;
-  border-radius:25px;
-  position:relative;
-}
+    width: 100%;
+    aspect-ratio: 4/5;  /* Giữ tỷ lệ giống ảnh dọc */
+    border-radius: 20px;
+  }
+
+  .slides{
+    height: 100%;
+  }
 
   .slides img{
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
   }
 
-  /* DOTS */
-  .services-dots{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin-top:15px;
+  .dots{
+    bottom: 10px;
   }
-
-  .services-dots .dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#fff;
-    opacity:.4;
-    transition:.3s;
-  }
-
-  .services-dots .dot.active{
-    background:#ffd700;
-    opacity:1;
-  }
+}
 /* ============================= */
 /* PREMIUM MOBILE FEEDBACK SLIDER */
 /* ============================= */
@@ -1337,6 +1325,7 @@ window.addEventListener("scroll", ()=>{
 </script>
 </body>
    
+
 
 
 
