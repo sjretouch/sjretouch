@@ -44,42 +44,57 @@ display:block;
 margin:15px auto 0;
 }
 /* ===============================
-   PREMIUM HEADER – SJ STUDIO
+/* ===============================
+   PRO LUXURY HEADER – SJ STUDIO
 =================================*/
 
 .main-header {
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,215,0,0.3);
-  position: relative;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+  transition: all 0.4s ease;
   z-index: 1000;
+}
+
+.main-header.shrink {
+  padding: 5px 0;
+  background: rgba(0,0,0,0.95);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
 }
 
 .header-container {
   max-width: 1300px;
   margin: auto;
-  padding: 18px 40px;
+  padding: 22px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.4s ease;
 }
 
 /* Logo */
 .logo img {
-  height: 38px;
-  transition: 0.3s ease;
+  height: 42px;
+  transition: 0.4s ease;
+}
+
+.main-header.shrink .logo img {
+  height: 32px;
 }
 
 .logo img:hover {
+  filter: drop-shadow(0 0 12px rgba(255,215,0,.8));
   transform: scale(1.05);
-  filter: drop-shadow(0 0 10px rgba(255,215,0,.8));
 }
 
-/* Menu */
+/* NAV */
 .nav-menu {
   display: flex;
-  gap: 45px;
+  gap: 50px;
   align-items: center;
 }
 
@@ -88,12 +103,10 @@ margin:15px auto 0;
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0.5px;
   position: relative;
   transition: 0.3s ease;
 }
 
-/* Underline animation */
 .nav-menu a::after {
   content: "";
   position: absolute;
@@ -113,18 +126,59 @@ margin:15px auto 0;
   width: 100%;
 }
 
-/* Contact button highlight */
+/* Contact Button */
 .contact-btn {
-  padding: 10px 22px;
-  border: 1px solid #ffd700;
+  padding: 10px 25px;
   border-radius: 30px;
   background: linear-gradient(45deg,#ffd700,#b8860b);
   color: #000 !important;
   font-weight: 600;
+  transition: 0.3s ease;
 }
 
 .contact-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #ffd700;
+  transition: 0.3s ease;
+}
+
+/* MOBILE */
+@media(max-width: 992px){
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 260px;
+    background: #000;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+    transition: 0.4s ease;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
 }
 /* HERO */
 .hero{
@@ -555,7 +609,9 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
   .hero p {
     font-size: 15px;
   }
-
+.hero {
+  padding-top: 140px;
+}
   /* SLIDER */
   .slider-container {
     width: 100%;
@@ -648,13 +704,20 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
       </a>
     </div>
 
-    <nav class="nav-menu">
+    <nav class="nav-menu" id="navMenu">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="https://sjretouch.github.io/gallery/" target="_blank">Gallery</a>
       <a href="#faq">FAQ</a>
       <a href="#contact" class="contact-btn">Contact</a>
     </nav>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
   </div>
 </header>
@@ -1031,11 +1094,30 @@ document.querySelectorAll(".faq-question").forEach(question=>{
 });
 
 });
+<script>
+/* SHRINK HEADER */
+window.addEventListener("scroll", function(){
+  const header = document.querySelector(".main-header");
+  if(window.scrollY > 80){
+    header.classList.add("shrink");
+  } else {
+    header.classList.remove("shrink");
+  }
+});
+
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", function(){
+  navMenu.classList.toggle("active");
+});
 </script>
 
 
 </body>
 </html>
+
 
 
 
