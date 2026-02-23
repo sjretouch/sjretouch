@@ -799,6 +799,61 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
     background:#ffd700;
     opacity:1;
   }
+/* ============================= */
+/* PREMIUM MOBILE FEEDBACK SLIDER */
+/* ============================= */
+
+@media (max-width: 768px){
+
+  .feedback{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    gap:20px;
+    padding-bottom:25px;
+  }
+
+  .feedback::-webkit-scrollbar{
+    display:none;
+  }
+
+  .feedback-item{
+    flex:0 0 90%;
+    scroll-snap-align:center;
+    background:rgba(255,255,255,.07);
+    border-radius:20px;
+    padding:25px;
+    transition:transform .4s ease, opacity .4s ease;
+    opacity:.6;
+    transform:scale(.9);
+  }
+
+  .feedback-item.active{
+    transform:scale(1);
+    opacity:1;
+  }
+
+  .feedback-dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:15px;
+  }
+
+  .feedback-dots .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#fff;
+    opacity:.4;
+    transition:.3s;
+  }
+
+  .feedback-dots .dot.active{
+    background:#ffd700;
+    opacity:1;
+  }
 
 }
 </style>
@@ -952,6 +1007,7 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <div class="feedback-item">🇺🇸 David R. – “Fast turnaround and consistent results.”</div>
 <div class="feedback-item">🇺🇸 Jessica L. – “My trusted retoucher for all sessions.”</div>
 </div>
+   <div class="feedback-dots"></div>
 </section>
 
 <!-- FAQ -->
@@ -1301,10 +1357,59 @@ document.addEventListener("DOMContentLoaded", function(){
   updateActive();
 
 });
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const slider = document.querySelector(".feedback");
+  const items = document.querySelectorAll(".feedback-item");
+  const dotsContainer = document.querySelector(".feedback-dots");
+
+  if(!slider) return;
+
+  items.forEach((_, index)=>{
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if(index === 0) dot.classList.add("active");
+    dotsContainer.appendChild(dot);
+
+    dot.addEventListener("click", ()=>{
+      slider.scrollTo({
+        left: items[index].offsetLeft - (slider.offsetWidth - items[index].offsetWidth)/2,
+        behavior:"smooth"
+      });
+    });
+  });
+
+  const dots = document.querySelectorAll(".feedback-dots .dot");
+
+  function updateActive(){
+    const center = slider.scrollLeft + slider.offsetWidth/2;
+
+    items.forEach((item,i)=>{
+      const itemCenter = item.offsetLeft + item.offsetWidth/2;
+
+      if(Math.abs(center - itemCenter) < item.offsetWidth/2){
+        item.classList.add("active");
+        dots.forEach(d=>d.classList.remove("active"));
+        dots[i].classList.add("active");
+      }else{
+        item.classList.remove("active");
+      }
+    });
+  }
+
+  slider.addEventListener("scroll", ()=>{
+    requestAnimationFrame(updateActive);
+  });
+
+  updateActive();
+
+});
 </script>
 
 </body>
 </html>
+
 
 
 
