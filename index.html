@@ -693,6 +693,9 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
     right: 15px;
     bottom: 15px;
   }
+   body{
+  transition: opacity .3s ease;
+}
 }
 </style>
 </head>
@@ -711,7 +714,7 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
     <nav class="nav-menu" id="navMenu">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
-      <a href="https://sjretouch.github.io/gallery/" target="_blank">Gallery</a>
+      <a href="https://sjretouch.github.io/gallery/">Gallery</a>
       <a href="#faq">FAQ</a>
       <a href="#contact" class="contact-btn">Contact</a>
     </nav>
@@ -1138,10 +1141,17 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
 });
+<script>
+document.querySelectorAll('a[href^="http"]').forEach(link => {
+  link.addEventListener("click", function(e){
+    document.body.style.opacity = "0";
+  });
+});
 </script>
 
 </body>
 </html>
+
 
 
 
