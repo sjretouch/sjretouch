@@ -59,7 +59,7 @@ header {
 
 /* Logo */
 .logo img {
-  height: 15px;
+  height: 35px;
   display: block;
 }
 
@@ -73,15 +73,28 @@ nav {
 nav a {
   color: #fff;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   transition: 0.3s ease;
 }
 
 nav a:hover {
   color: #d4af37; /* vàng premium */
 }
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #d4af37;
+  transition: 0.3s ease;
+}
 
+nav a:hover::after {
+  width: 100%;
+}
 /* HERO */
 .hero{
 display:flex;
@@ -983,6 +996,7 @@ document.querySelectorAll(".faq-question").forEach(question=>{
 
 </body>
 </html>
+
 
 
 
