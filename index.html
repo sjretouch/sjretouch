@@ -434,19 +434,20 @@ position:relative;
 }
 
 .footer-container{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:80px;
-max-width:1100px;
-margin:auto;
-flex-wrap:wrap;
+  display:flex;
+  justify-content:space-between;
+  align-items:stretch;   /* QUAN TRỌNG */
+  gap:60px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .footer-left,
 .footer-right{
-flex:1;
-text-align:center;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .footer-logo{
@@ -488,16 +489,15 @@ font-size:18px;
 
 /* GOLD ANIMATED DIVIDER */
 .footer-divider{
-width:2px;
-height:180px;
-background:linear-gradient(to bottom,
-transparent,
-#ffd700,
-#fff,
-#ffd700,
-transparent);
-position:relative;
-overflow:hidden;
+  width:1px;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    #ffd700,
+    #fff,
+    #ffd700,
+    transparent
+  );
 }
 
 .footer-divider::after{
@@ -1355,6 +1355,7 @@ window.addEventListener("scroll", ()=>{
 </script>
 </body>
    
+
 
 
 
