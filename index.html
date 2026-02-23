@@ -56,7 +56,9 @@ header {
   width: 100%;
   box-sizing: border-box;
 }
-
+header {
+  height: 70px;
+}
 /* Logo */
 .logo img {
   height: 35px;
@@ -609,7 +611,10 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 <body>
 
 <header>
-<img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<div class="logo">
+  <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true"
+       onclick="window.scrollTo({top:0,behavior:'smooth'})">
+</div>
 <nav>
 <a href="#">Home</a>
 <a href="#services">Services</a>
@@ -996,6 +1001,7 @@ document.querySelectorAll(".faq-question").forEach(question=>{
 
 </body>
 </html>
+
 
 
 
