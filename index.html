@@ -43,59 +43,88 @@ background:#ffd700;
 display:block;
 margin:15px auto 0;
 }
+/* ===============================
+   PREMIUM HEADER – SJ STUDIO
+=================================*/
 
-/* ================= HEADER CLEAN VERSION ================= */
+.main-header {
+  width: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  position: relative;
+  z-index: 1000;
+}
 
-header {
-  background: #000;
-  padding: 12px 60px;
+.header-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 18px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
 }
-header {
-  height: 70px;
-}
+
 /* Logo */
 .logo img {
-  height: 35px;
-  display: block;
+  height: 38px;
+  transition: 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(255,215,0,.8));
 }
 
 /* Menu */
-nav {
+.nav-menu {
   display: flex;
+  gap: 45px;
   align-items: center;
-  gap: 35px;
 }
 
-nav a {
+.nav-menu a {
   color: #fff;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
   transition: 0.3s ease;
 }
 
-nav a:hover {
-  color: #d4af37; /* vàng premium */
-}
-nav a::after {
+/* Underline animation */
+.nav-menu a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: -8px;
   width: 0%;
   height: 2px;
-  background: #d4af37;
+  background: linear-gradient(90deg,#ffd700,#b8860b);
   transition: 0.3s ease;
 }
 
-nav a:hover::after {
+.nav-menu a:hover {
+  color: #ffd700;
+}
+
+.nav-menu a:hover::after {
   width: 100%;
+}
+
+/* Contact button highlight */
+.contact-btn {
+  padding: 10px 22px;
+  border: 1px solid #ffd700;
+  border-radius: 30px;
+  background: linear-gradient(45deg,#ffd700,#b8860b);
+  color: #000 !important;
+  font-weight: 600;
+}
+
+.contact-btn:hover {
+  transform: scale(1.05);
 }
 /* HERO */
 .hero{
@@ -610,21 +639,27 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
 
 <body>
 
-<header>
-<div class="logo">
-  <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true"
-       onclick="window.scrollTo({top:0,behavior:'smooth'})">
-</div>
-<nav>
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="https://sjretouch.github.io/gallery/" target="_blank">Gallery</a>
-<a href="#faq">FAQ</a>
-<a href="#contact">Contact Us</a>
-</nav>
+<header class="main-header">
+  <div class="header-container">
+
+    <div class="logo">
+      <a href="#home">
+        <img src="https://github.com/sjretouch/sjretouch/blob/main/2.png?raw=true" alt="SJ Photo Logo">
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="https://sjretouch.github.io/gallery/" target="_blank">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="contact-btn">Contact</a>
+    </nav>
+
+  </div>
 </header>
 
-<section class="hero">
+<section id="home" class="hero">
 <div class="hero-text">
 <h1>Welcome to SJphoto</h1>
 <p>We are the best choice to help you increase the attraction to your product.</p>
@@ -1001,6 +1036,7 @@ document.querySelectorAll(".faq-question").forEach(question=>{
 
 </body>
 </html>
+
 
 
 
