@@ -15,6 +15,7 @@ html{scroll-behavior:smooth;}
 body{
 color:#fff;
 background:url('https://media.craiyon.com/2025-09-26/4twMEBaJQ7KWGoDwjy0brQ.webp') no-repeat center center/cover;
+background-attachment:fixed;
 }
 
 body::before{
@@ -204,19 +205,12 @@ margin:15px auto 0;
 }
 /* HERO */
 .hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:60px;
-  padding-top:140px;
-  min-height:100svh;
-}
-   @media (max-width: 992px){
-  .hero{
-    flex-direction:column;
-    padding-top:120px;
-    min-height:100svh;
-  }
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:60px;
+padding-top:170px;
+min-height:95vh;
 }
 .hero-text{flex:1;}
 .hero-text h1{font-size:52px;color:#ffd700;margin-bottom:20px;}
@@ -434,20 +428,19 @@ position:relative;
 }
 
 .footer-container{
-  display:flex;
-  justify-content:space-between;
-  align-items:stretch;   /* QUAN TRỌNG */
-  gap:60px;
-  max-width:1100px;
-  margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:80px;
+max-width:1100px;
+margin:auto;
+flex-wrap:wrap;
 }
 
 .footer-left,
 .footer-right{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+flex:1;
+text-align:center;
 }
 
 .footer-logo{
@@ -489,15 +482,16 @@ font-size:18px;
 
 /* GOLD ANIMATED DIVIDER */
 .footer-divider{
-  width:1px;
-  background:linear-gradient(
-    to bottom,
-    transparent,
-    #ffd700,
-    #fff,
-    #ffd700,
-    transparent
-  );
+width:2px;
+height:180px;
+background:linear-gradient(to bottom,
+transparent,
+#ffd700,
+#fff,
+#ffd700,
+transparent);
+position:relative;
+overflow:hidden;
 }
 
 .footer-divider::after{
@@ -623,19 +617,10 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
   padding-top: 140px;
 }
   /* SLIDER */
-  .slider{
-    width:100%;
-    aspect-ratio:8/5;
-    height:auto;
+  .slider-container {
+    width: 100%;
+    height: auto;
   }
-
-  .slides img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-
-}
 
   .slider {
     height: auto;
@@ -714,13 +699,11 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
   }
 
   .slider{
-  width:100%;
-  max-width:1060px;
-  aspect-ratio: 16/9;
-  overflow:hidden;
-  border-radius:25px;
-  position:relative;
-}
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4/5;   /* đổi tỷ lệ cho mobile */
+    border-radius: 20px;
+  }
 
   .slides img{
     object-fit: cover;
@@ -910,9 +893,6 @@ box-shadow:0 0 15px rgba(255,215,0,.6);
     padding-top:140px;
   }
 
-}
-   html, body{
-  overflow-x:hidden;
 }
 </style>
 </head>
@@ -1355,9 +1335,6 @@ window.addEventListener("scroll", ()=>{
 </script>
 </body>
    
-
-
-
 
 
 
