@@ -107,16 +107,20 @@
     const desktopSlides = sliderConfig.desktop;
     const mobileSlides = Array.isArray(sliderConfig.mobile) && sliderConfig.mobile.length ? sliderConfig.mobile : desktopSlides;
 
+        const isMobileViewport = window.matchMedia('(max-width: 991px)').matches;
+    const totalSlides = isMobileViewport ? mobileSlides.length : desktopSlides.length;
+
     slides.innerHTML = '';
-    desktopSlides.forEach((desktopSrc, i) => {
-      const mobileSrc = mobileSlides[i] || desktopSrc;
+    for (let i = 0; i < totalSlides; i += 1) {
+      const desktopSrc = desktopSlides[i] || mobileSlides[i];
+      const mobileSrc = mobileSlides[i] || desktopSlides[i];
       const picture = document.createElement('picture');
       const source = document.createElement('source');
-      source.media = '(max-width: 768px)';
+      source.media = '(max-width: 991px)';
       source.srcset = mobileSrc;
 
       const img = document.createElement('img');
-      img.src = desktopSrc;
+      img.src = isMobileViewport ? mobileSrc : desktopSrc;
       img.alt = `Retouch sample ${i + 1}`;
       img.loading = i === 0 ? 'eager' : 'lazy';
       img.decoding = 'async';
@@ -124,7 +128,7 @@
       picture.appendChild(source);
       picture.appendChild(img);
       slides.appendChild(picture);
-    });
+    }
 
     const total = slides.children.length;
     let index = 0;
@@ -193,3 +197,8 @@
     start();
   }
 });
+
+
+
+
+
