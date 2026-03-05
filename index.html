@@ -72,6 +72,32 @@ form input:focus,form select:focus,form textarea:focus{border-color:rgba(243,212
 @media (max-width:820px){.hamburger{display:flex}.nav-menu{position:fixed;top:76px;left:12px;right:12px;border-radius:16px;background:rgba(10,9,8,.96);border:1px solid var(--line);box-shadow:var(--shadow);flex-direction:column;align-items:flex-start;padding:16px;gap:10px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:.2s}.nav-menu.active{opacity:1;pointer-events:auto;transform:translateY(0)}.nav-menu a{width:100%;padding:7px}.contact-btn{width:100%;text-align:center}}
 @media (max-width:768px){section{padding:68px 6%}.grid,.feedback{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory}.grid .card{min-width:85%;scroll-snap-align:start}.feedback .feedback-item{min-width:88%;scroll-snap-align:start}.hero-text{padding:22px}.hero-actions{display:grid;gap:10px}.btn{width:100%;text-align:center}.slider{aspect-ratio:3/4}.header-container{height:76px;padding:0 14px}.logo img{height:52px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Fix hero slider quá to trên PC */
+@media (min-width: 993px) {
+  .hero {
+    min-height: calc(100vh - 110px);
+    padding-top: 120px;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .hero-text {
+    flex: 1 1 44%;
+    max-width: 560px;
+  }
+
+  .slider {
+    flex: 1 1 56%;
+    width: min(56vw, 860px);
+    max-width: 860px;
+    max-height: calc(100vh - 220px);
+    aspect-ratio: 16 / 10;
+  }
+
+  .slides img {
+    object-fit: cover;
+  }
+}
 </style>
 </head>
 
@@ -439,6 +465,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 </body>
    
+
 
 
 
