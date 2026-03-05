@@ -106,7 +106,8 @@
   if (slides && dotsContainer && slider && sliderConfig && Array.isArray(sliderConfig.desktop) && sliderConfig.desktop.length) {
     const desktopSlides = sliderConfig.desktop;
     const mobileSlides = Array.isArray(sliderConfig.mobile) && sliderConfig.mobile.length ? sliderConfig.mobile : [];
-    const isMobileDevice = window.matchMedia('(max-width: 991px)').matches || window.matchMedia('(pointer: coarse)').matches;
+    const uaMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '');
+    const isMobileDevice = window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(pointer: coarse)').matches || uaMobile;
     const slideList = isMobileDevice && mobileSlides.length ? mobileSlides : desktopSlides;
 
     slides.innerHTML = '';
@@ -186,6 +187,7 @@
     start();
   }
 });
+
 
 
 
