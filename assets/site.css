@@ -21,7 +21,7 @@ h2{text-align:center;font-size:clamp(2rem,4vw,3rem);color:var(--gold);margin-bot
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;min-height:100dvh;padding-top:118px}
 .hero-text{background:transparent;border:none;border-radius:0;padding:0;backdrop-filter:none;box-shadow:none}
 .hero-text h1{font-size:clamp(2.2rem,5vw,4rem);color:#f9e3b1;margin-bottom:10px}
-.hero-text p{font-size:1.04rem;color:var(--muted);margin-bottom:20px;max-width:38ch}
+.hero-text p{font-size:1.04rem;color:var(--muted);margin-bottom:20px;max-width:58ch}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;transition:.22s;background:linear-gradient(140deg,var(--gold),var(--gold2));color:#1a1209}
 .btn:hover{transform:translateY(-2px)}
@@ -121,6 +121,7 @@ body::after{transform:translateZ(0)}
 .ba-label-before{left:14px}
 .ba-label-after{right:14px}
 @media (max-width:768px){.ba-label{font-size:.7rem;padding:4px 8px;top:10px}.ba-label-before{left:10px}.ba-label-after{right:10px}.ba-handle::before{width:34px;height:34px}}
+
 
 
 
