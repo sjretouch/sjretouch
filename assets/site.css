@@ -80,13 +80,13 @@ form input:focus,form select:focus,form textarea:focus{border-color:rgba(243,212
 .services-carousel{position:relative;display:flex;align-items:center}
 .services-track-mask{width:100%;overflow:hidden}
 #services .services-grid{display:flex;flex-wrap:nowrap;gap:20px;padding:6px 0 12px;margin:0;transform:translate3d(0,0,0);transition:transform .65s cubic-bezier(.77,0,.18,1);will-change:transform}
-#services .services-grid .card{flex:0 0 calc((100% - 40px)/3);min-width:0}
+#services .services-grid .card{flex:0 0 calc((100% - 40px)/3);min-width:0;display:flex;flex-direction:column}
 #services .service-card{cursor:pointer;user-select:none;transition:transform .25s ease,border-color .25s ease}
 #services .service-card:hover{transform:translateY(-4px)}
 #services .service-card img{aspect-ratio:1/1;max-height:none}
-#services .card-content{padding:16px 16px 18px}
+#services .card-content{padding:16px 16px 18px;display:flex;flex-direction:column;height:100%}
 #services .card ul{margin-bottom:12px}
-#services .service-quote-btn{width:100%;text-align:center}
+#services .service-quote-btn{width:100%;text-align:center;margin-top:auto}
 #services .service-card:focus-visible{outline:2px solid rgba(243,212,138,.92);outline-offset:3px}
 .services-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:999px;border:1px solid rgba(243,212,138,.45);background:rgba(7,6,5,.75);color:var(--gold);display:grid;place-items:center;cursor:pointer;z-index:5;opacity:.08;transition:opacity .22s ease,background .22s ease,transform .22s ease}
 #services:hover .services-nav,#services:focus-within .services-nav{opacity:1}
@@ -121,5 +121,6 @@ body::after{transform:translateZ(0)}
 .ba-label-before{left:14px}
 .ba-label-after{right:14px}
 @media (max-width:768px){.ba-label{font-size:.7rem;padding:4px 8px;top:10px}.ba-label-before{left:10px}.ba-label-after{right:10px}.ba-handle::before{width:34px;height:34px}}
+
 
 
