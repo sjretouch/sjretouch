@@ -103,16 +103,27 @@
     const handle = slider.querySelector('.ba-handle');
     if (!range || !afterWrap || !handle) return;
 
+    let rafId = 0;
+    let pendingValue = range.value || slider.getAttribute('data-start') || 50;
+
     const setPosition = (rawValue) => {
       const value = Number.parseFloat(rawValue);
       const position = Number.isFinite(value) ? Math.min(100, Math.max(0, value)) : 50;
       slider.style.setProperty('--ba-pos', `${position}%`);
-      handle.style.left = `${position}%`;
       range.value = `${position}`;
     };
 
-    setPosition(range.value || slider.getAttribute('data-start') || 50);
-    range.addEventListener('input', () => setPosition(range.value));
+    const requestPositionUpdate = (rawValue) => {
+      pendingValue = rawValue;
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        setPosition(pendingValue);
+        rafId = 0;
+      });
+    };
+
+    setPosition(pendingValue);
+    range.addEventListener('input', () => requestPositionUpdate(range.value));
     range.addEventListener('change', () => setPosition(range.value));
   });
   const servicesTrack = document.getElementById('servicesTrack');
@@ -314,6 +325,7 @@
     start();
   }
 });
+
 
 
 

@@ -108,13 +108,13 @@ body::after{transform:translateZ(0)}
 @media (max-width:768px){body::before{filter:blur(2px)}}
 
 /* Before/After comparison slider (service pages) */
-.ba-slider{position:relative;aspect-ratio:4/5;min-height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(243,212,138,.28);box-shadow:var(--shadow);background:#000;--ba-pos:50%}
+.ba-slider{position:relative;aspect-ratio:4/5;min-height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(243,212,138,.28);box-shadow:var(--shadow);background:#000;--ba-pos:50%;contain:layout paint}
 .service-gallery .ba-slider img{display:block!important;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover;border:0!important;border-radius:0!important;box-shadow:none!important}
 .ba-before{position:absolute;inset:0;z-index:1}
-.ba-after-wrap{position:absolute;inset:0;overflow:hidden;z-index:2;clip-path:inset(0 calc(100% - var(--ba-pos,50%)) 0 0)}
+.ba-after-wrap{position:absolute;inset:0;overflow:hidden;z-index:2;clip-path:inset(0 calc(100% - var(--ba-pos,50%)) 0 0);will-change:clip-path;transform:translateZ(0)}
 .ba-after{position:absolute;inset:0;width:100%;height:100%}
-.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;appearance:none;-webkit-appearance:none;background:transparent;z-index:6}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(243,212,138,.95);transform:translateX(-1px);z-index:5;pointer-events:none}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;appearance:none;-webkit-appearance:none;background:transparent;z-index:6;touch-action:none;-webkit-tap-highlight-color:transparent}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--ba-pos,50%);width:2px;background:rgba(243,212,138,.95);transform:translateX(-1px);z-index:5;pointer-events:none;will-change:left}
 .ba-handle::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:rgba(7,6,5,.88);border:1px solid rgba(243,212,138,.86);box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .ba-handle::after{content:"↔";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:14px;color:var(--gold);font-weight:700}
 .ba-label{position:absolute;top:14px;z-index:7;padding:5px 10px;border-radius:999px;background:rgba(7,6,5,.7);border:1px solid rgba(243,212,138,.38);color:#f7e8c4;font-size:.75rem;font-weight:700;letter-spacing:.2px;text-transform:uppercase}
@@ -127,4 +127,5 @@ body::after{transform:translateZ(0)}
 
 
 .single-line-title{white-space:nowrap;font-size:clamp(.72rem,3.2vw,1.95rem);line-height:1.12}
+
 
