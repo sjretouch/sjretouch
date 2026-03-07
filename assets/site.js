@@ -25,7 +25,7 @@
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     const href = link.getAttribute('href');
-    if (!href || href === '#') return;
+    if (!href || href === '#' || link.classList.contains('service-quote-btn')) return;
     link.addEventListener('click', (e) => {
       const target = document.querySelector(href);
       if (!target) return;
@@ -96,6 +96,114 @@
     });
   }
 
+  const servicesTrack = document.getElementById('servicesTrack');
+  const servicesPrev = document.querySelector('.services-prev');
+  const servicesNext = document.querySelector('.services-next');
+  const serviceCards = servicesTrack ? Array.from(servicesTrack.querySelectorAll('.service-card[data-service]')) : [];
+  const quoteTypeSelect = form ? form.querySelector('select[name="photo_type"]') : null;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const scrollToContact = () => {
+    const contact = document.getElementById('contact');
+    if (!contact) return;
+    const top = contact.getBoundingClientRect().top + window.pageYOffset - 92;
+    window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  };
+
+  const pickServiceType = (serviceName) => {
+    if (!quoteTypeSelect || !serviceName) return;
+    const option = Array.from(quoteTypeSelect.options).find((item) => item.value === serviceName || item.text.trim() === serviceName);
+    if (!option) return;
+    quoteTypeSelect.value = option.value || option.text.trim();
+    quoteTypeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+
+  const openQuoteForm = (serviceName) => {
+    pickServiceType(serviceName);
+    scrollToContact();
+    window.setTimeout(() => {
+      if (quoteTypeSelect) quoteTypeSelect.focus({ preventScroll: true });
+    }, prefersReducedMotion ? 0 : 450);
+  };
+
+  serviceCards.forEach((card) => {
+    const serviceName = card.getAttribute('data-service');
+    const serviceHref = card.getAttribute('data-href');
+    if (!serviceName) return;
+
+    const openServicePage = () => {
+      if (!serviceHref) return;
+      window.location.href = serviceHref;
+    };
+
+    card.addEventListener('click', (e) => {
+      const target = e.target instanceof Element ? e.target : null;
+      const quoteBtn = target ? target.closest('.service-quote-btn') : null;
+      if (quoteBtn) {
+        e.preventDefault();
+        openQuoteForm(serviceName);
+        return;
+      }
+
+      const interactive = target ? target.closest('button,input,select,textarea,label') : null;
+      if (interactive) return;
+      openServicePage();
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openServicePage();
+    });
+  });
+
+  if (servicesTrack && servicesPrev && servicesNext) {
+    let servicesIndex = 0;
+
+    const getColumns = () => {
+      if (window.matchMedia('(max-width: 768px)').matches) return 1;
+      if (window.matchMedia('(max-width: 1100px)').matches) return 2;
+      return 3;
+    };
+
+    const getStepSize = () => {
+      const firstCard = servicesTrack.querySelector('.service-card');
+      if (!firstCard) return 0;
+      const styles = getComputedStyle(servicesTrack);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0;
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
+    const getMaxIndex = () => {
+      return Math.max(0, serviceCards.length - getColumns());
+    };
+
+    const updateServicesCarousel = () => {
+      const maxIndex = getMaxIndex();
+      if (servicesIndex > maxIndex) servicesIndex = maxIndex;
+
+      const offset = getStepSize() * servicesIndex;
+      servicesTrack.style.transform = `translate3d(-${offset}px, 0, 0)`;
+
+      servicesPrev.disabled = servicesIndex <= 0;
+      servicesNext.disabled = servicesIndex >= maxIndex;
+    };
+
+    const moveServices = (direction) => {
+      const maxIndex = getMaxIndex();
+      servicesIndex = Math.max(0, Math.min(maxIndex, servicesIndex + direction));
+      updateServicesCarousel();
+    };
+
+    servicesPrev.addEventListener('click', () => moveServices(-1));
+    servicesNext.addEventListener('click', () => moveServices(1));
+
+    window.addEventListener('resize', () => {
+      window.requestAnimationFrame(updateServicesCarousel);
+    });
+
+    updateServicesCarousel();
+  }
   const slides = document.getElementById('slides');
   const dotsContainer = document.getElementById('dots');
   const slider = document.getElementById('slider');
@@ -187,6 +295,14 @@
     start();
   }
 });
+
+
+
+
+
+
+
+
 
 
 

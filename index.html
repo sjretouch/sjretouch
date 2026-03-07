@@ -6,7 +6,7 @@
   <title>SJ Photo | Professional Retouching</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="./assets/site.css?v=20260306_4" />
+  <link rel="stylesheet" href="./assets/site.css?v=20260307_3" />
 </head>
 <body>
   <header class="main-header">
@@ -43,81 +43,87 @@
 
   <section id="services">
     <h2>Services</h2>
-    <div class="services-grid">
-      <article class="card">
-        <img src="https://github.com/sjretouch/sjretouch/blob/main/Newborn.jpg?raw=true" alt="Newborn and Basic retouching" />
-        <div class="card-content">
-          <h3>Newborn &amp; Basic</h3>
-          <div class="price">$2 / image</div>
-          <ul>
-            <li>Background removal</li>
-            <li>Eyes and face retouching</li>
-            <li>Skin smoothing and blemish cleanup</li>
-            <li>Lighting and brightness balance</li>
-          </ul>
-          <a href="service-newborn-basic.html" class="btn">View Service</a>
-        </div>
-      </article>
+    <div class="services-carousel" id="servicesCarousel">
+      <button class="services-nav services-prev" type="button" aria-label="Previous service"><i class="fas fa-chevron-left"></i></button>
+      <div class="services-track-mask">
+        <div class="services-grid" id="servicesTrack">
+          <article class="card service-card" data-service="Newborn and Basic" data-href="service-newborn-basic.html" tabindex="0" role="link" aria-label="Open Newborn and Basic service details">
+            <img src="https://github.com/sjretouch/sjretouch/blob/main/Newborn.jpg?raw=true" alt="Newborn and Basic retouching" />
+            <div class="card-content">
+              <h3>Newborn &amp; Basic</h3>
+              <div class="price">$2 / image</div>
+              <ul>
+                <li>Background removal</li>
+                <li>Eyes and face retouching</li>
+                <li>Skin smoothing and blemish cleanup</li>
+                <li>Lighting and brightness balance</li>
+              </ul>
+              <a href="#contact" class="btn service-quote-btn" data-service="Newborn and Basic">Get Quote</a>
+            </div>
+          </article>
 
-      <article class="card">
-        <img src="https://github.com/sjretouch/sjretouch/blob/main/portrait.jpg?raw=true" alt="Portrait retouching" />
-        <div class="card-content">
-          <h3>Portrait</h3>
-          <div class="price">$4 / image</div>
-          <ul>
-            <li>Skin retouching</li>
-            <li>Body liquefy</li>
-            <li>Hair retouching</li>
-            <li>Objects removal</li>
-          </ul>
-          <a href="service-portrait.html" class="btn">View Service</a>
-        </div>
-      </article>
+          <article class="card service-card" data-service="Portrait" data-href="service-portrait.html" tabindex="0" role="link" aria-label="Open Portrait service details">
+            <img src="https://github.com/sjretouch/sjretouch/blob/main/portrait.jpg?raw=true" alt="Portrait retouching" />
+            <div class="card-content">
+              <h3>Portrait</h3>
+              <div class="price">$4 / image</div>
+              <ul>
+                <li>Skin retouching</li>
+                <li>Body liquefy</li>
+                <li>Hair retouching</li>
+                <li>Objects removal</li>
+              </ul>
+              <a href="#contact" class="btn service-quote-btn" data-service="Portrait">Get Quote</a>
+            </div>
+          </article>
 
-      <article class="card">
-        <img src="https://github.com/sjretouch/sjretouch/blob/main/Bau.jpg?raw=true" alt="Maternity retouching" />
-        <div class="card-content">
-          <h3>Maternity</h3>
-          <div class="price">$4 / image</div>
-          <ul>
-            <li>Face beauty retouch</li>
-            <li>Skin tone smoothing</li>
-            <li>Teeth whitening</li>
-            <li>Wrinkle cleanup</li>
-          </ul>
-          <a href="service-maternity.html" class="btn">View Service</a>
-        </div>
-      </article>
+          <article class="card service-card" data-service="Maternity" data-href="service-maternity.html" tabindex="0" role="link" aria-label="Open Maternity service details">
+            <img src="https://github.com/sjretouch/sjretouch/blob/main/Bau.jpg?raw=true" alt="Maternity retouching" />
+            <div class="card-content">
+              <h3>Maternity</h3>
+              <div class="price">$4 / image</div>
+              <ul>
+                <li>Face beauty retouch</li>
+                <li>Skin tone smoothing</li>
+                <li>Teeth whitening</li>
+                <li>Wrinkle cleanup</li>
+              </ul>
+              <a href="#contact" class="btn service-quote-btn" data-service="Maternity">Get Quote</a>
+            </div>
+          </article>
 
-      <article class="card">
-        <img src="https://github.com/sjretouch/sjretouch/blob/main/model.jpg?raw=true" alt="Model retouching" />
-        <div class="card-content">
-          <h3>Model</h3>
-          <div class="price">$4 / image</div>
-          <ul>
-            <li>Skin softening</li>
-            <li>Body slimming</li>
-            <li>Color correction</li>
-            <li>Background retouching</li>
-          </ul>
-          <a href="service-model.html" class="btn">View Service</a>
-        </div>
-      </article>
+          <article class="card service-card" data-service="Model" data-href="service-model.html" tabindex="0" role="link" aria-label="Open Model service details">
+            <img src="https://github.com/sjretouch/sjretouch/blob/main/model.jpg?raw=true" alt="Model retouching" />
+            <div class="card-content">
+              <h3>Model</h3>
+              <div class="price">$4 / image</div>
+              <ul>
+                <li>Skin softening</li>
+                <li>Body slimming</li>
+                <li>Color correction</li>
+                <li>Background retouching</li>
+              </ul>
+              <a href="#contact" class="btn service-quote-btn" data-service="Model">Get Quote</a>
+            </div>
+          </article>
 
-      <article class="card">
-        <img src="https://github.com/sjretouch/sjretouch/blob/main/high%20end.jpg?raw=true" alt="High-end retouching" />
-        <div class="card-content">
-          <h3>High-End</h3>
-          <div class="price">$7 / image</div>
-          <ul>
-            <li>Dodge and burn</li>
-            <li>Digital airbrushing</li>
-            <li>Digital makeup</li>
-            <li>Light and exposure balancing</li>
-          </ul>
-          <a href="service-high-end.html" class="btn">View Service</a>
+          <article class="card service-card" data-service="High-End" data-href="service-high-end.html" tabindex="0" role="link" aria-label="Open High-End service details">
+            <img src="https://github.com/sjretouch/sjretouch/blob/main/high%20end.jpg?raw=true" alt="High-end retouching" />
+            <div class="card-content">
+              <h3>High-End</h3>
+              <div class="price">$7 / image</div>
+              <ul>
+                <li>Dodge and burn</li>
+                <li>Digital airbrushing</li>
+                <li>Digital makeup</li>
+                <li>Light and exposure balancing</li>
+              </ul>
+              <a href="#contact" class="btn service-quote-btn" data-service="High-End">Get Quote</a>
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
+      <button class="services-nav services-next" type="button" aria-label="Next service"><i class="fas fa-chevron-right"></i></button>
     </div>
   </section>
 
@@ -155,11 +161,11 @@
       <input type="email" name="email" placeholder="Your Email" required />
       <select name="photo_type" required>
         <option value="">Select Photo Type</option>
-        <option>Newborn and Basic</option>
-        <option>Portrait</option>
-        <option>Maternity</option>
-        <option>Model</option>
-        <option>High-End</option>
+        <option value="Newborn and Basic">Newborn and Basic</option>
+        <option value="Portrait">Portrait</option>
+        <option value="Maternity">Maternity</option>
+        <option value="Model">Model</option>
+        <option value="High-End">High-End</option>
       </select>
       <input type="text" name="image_link" placeholder="Image Link" />
       <textarea name="message" placeholder="Project Details" required></textarea>
@@ -217,20 +223,24 @@
         'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_7924.jpg?raw=true',
         'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_7924%20B.jpg?raw=true',
         'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_7940.jpg?raw=true',
-        'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_7940%20B.jpg?raw=true',
+        'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_7940B.jpg?raw=true',
         'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_8101.jpg?raw=true',
-        'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_8101%20B.jpg?raw=true',
+        'https://github.com/sjretouch/sjretouch/blob/main/images/IMG_8101B.jpg?raw=true',
         'https://github.com/sjretouch/sjretouch/blob/main/images/hosein-zanbori-0o4QY48B-r0%202.jpg?raw=true',
         'https://github.com/sjretouch/sjretouch/blob/main/images/hosein-zanbori-0o4QY48B-r0.jpg?raw=true',
         'https://github.com/sjretouch/sjretouch/blob/main/images/hosein-zanbori-24CD1Ps7Pqw.jpg?raw=true',
-        'https://github.com/sjretouch/sjretouch/blob/main/images/hosein-zanbori-24CD1Ps7Pqw%20B.jpg?raw=true'
+        'https://github.com/sjretouch/sjretouch/blob/main/images/hosein-zanbori-24CD1Ps7PqwB.jpg?raw=true'
       ]
     };
   </script>
-  <script src="./assets/site.js?v=20260306_4"></script>
+  <script src="./assets/site.js?v=20260307_3"></script>
 </body>
 </html>
-<!-- update -->
+
+
+
+
+
 
 
 
