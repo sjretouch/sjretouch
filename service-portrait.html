@@ -6,7 +6,7 @@
   <title>SJ Photo | Portrait</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="./assets/site.css?v=20260306b" />
+  <link rel="stylesheet" href="./assets/site.css?v=20260307_6" />
 </head>
 <body>
   <header class="main-header">
@@ -42,11 +42,17 @@
         </div>
       </article>
 
-      <div class="service-gallery">
-          <img src="https://github.com/sjretouch/sjretouch/blob/main/portrait.jpg?raw=true" alt="Portrait sample" />
-          <img src="https://github.com/sjretouch/sjretouch/blob/main/BA%204.jpg?raw=true" alt="Portrait sample" />
-          <img src="https://github.com/sjretouch/sjretouch/blob/main/BA%205.jpg?raw=true" alt="Portrait sample" />
-          <img src="https://github.com/sjretouch/sjretouch/blob/main/BA%206.jpg?raw=true" alt="Portrait sample" />
+            <div class="service-gallery">
+        <div class="ba-slider" data-start="50">
+          <img class="ba-before" src="https://github.com/sjretouch/sjretouch/blob/main/portrait.jpg?raw=true" alt="Portrait before retouch" />
+          <div class="ba-after-wrap">
+            <img class="ba-after" src="https://github.com/sjretouch/sjretouch/blob/main/BA%204.jpg?raw=true" alt="Portrait after retouch" />
+          </div>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Portrait before and after slider" />
+          <div class="ba-handle" aria-hidden="true"></div>
+          <span class="ba-label ba-label-before">Before</span>
+          <span class="ba-label ba-label-after">After</span>
+        </div>
       </div>
     </div>
   </section>
@@ -67,8 +73,12 @@
     <div class="footer-bottom">&copy; 2026 SJ Photo. All rights reserved.</div>
   </footer>
 
-  <script src="./assets/site.js?v=20260306b"></script>
+  <script src="./assets/site.js?v=20260307_6"></script>
 </body>
 </html>
+
+
+
+
 
 
