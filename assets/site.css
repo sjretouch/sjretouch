@@ -125,3 +125,6 @@ body::after{transform:translateZ(0)}
 
 
 
+
+.single-line-title{white-space:nowrap;font-size:clamp(.72rem,3.2vw,1.95rem);line-height:1.12}
+
