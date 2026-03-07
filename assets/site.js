@@ -96,6 +96,25 @@
     });
   }
 
+  const beforeAfterSliders = document.querySelectorAll('.ba-slider');
+  beforeAfterSliders.forEach((slider) => {
+    const range = slider.querySelector('.ba-range');
+    const afterWrap = slider.querySelector('.ba-after-wrap');
+    const handle = slider.querySelector('.ba-handle');
+    if (!range || !afterWrap || !handle) return;
+
+    const setPosition = (rawValue) => {
+      const value = Number.parseFloat(rawValue);
+      const position = Number.isFinite(value) ? Math.min(100, Math.max(0, value)) : 50;
+      slider.style.setProperty('--ba-pos', `${position}%`);
+      handle.style.left = `${position}%`;
+      range.value = `${position}`;
+    };
+
+    setPosition(range.value || slider.getAttribute('data-start') || 50);
+    range.addEventListener('input', () => setPosition(range.value));
+    range.addEventListener('change', () => setPosition(range.value));
+  });
   const servicesTrack = document.getElementById('servicesTrack');
   const servicesPrev = document.querySelector('.services-prev');
   const servicesNext = document.querySelector('.services-next');
@@ -295,6 +314,8 @@
     start();
   }
 });
+
+
 
 
 
