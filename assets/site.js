@@ -324,23 +324,71 @@
 
     start();
   }
+
+  const galleryLightbox = document.getElementById('galleryLightbox');
+  if (galleryLightbox) {
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-grid img'));
+    const lightboxImage = galleryLightbox.querySelector('.lightbox-image');
+    const lightboxCaption = galleryLightbox.querySelector('.lightbox-caption');
+    const closeTargets = galleryLightbox.querySelectorAll('[data-lightbox-close]');
+    const prevButton = galleryLightbox.querySelector('[data-lightbox-prev]');
+    const nextButton = galleryLightbox.querySelector('[data-lightbox-next]');
+    let currentIndex = 0;
+
+    const updateLightbox = (index) => {
+      if (!galleryImages.length || !lightboxImage) return;
+      currentIndex = (index + galleryImages.length) % galleryImages.length;
+      const img = galleryImages[currentIndex];
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt || `Gallery image ${currentIndex + 1}`;
+
+      if (lightboxCaption) {
+        lightboxCaption.textContent = img.alt || '';
+        lightboxCaption.style.display = img.alt ? '' : 'none';
+      }
+
+      const disableNav = galleryImages.length < 2;
+      if (prevButton) {
+        if (disableNav) prevButton.setAttribute('disabled', 'disabled');
+        else prevButton.removeAttribute('disabled');
+      }
+      if (nextButton) {
+        if (disableNav) nextButton.setAttribute('disabled', 'disabled');
+        else nextButton.removeAttribute('disabled');
+      }
+    };
+
+    const openLightbox = (index) => {
+      updateLightbox(index);
+      galleryLightbox.classList.add('is-open');
+      galleryLightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+    };
+
+    const closeLightbox = () => {
+      galleryLightbox.classList.remove('is-open');
+      galleryLightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      if (lightboxImage) lightboxImage.src = '';
+    };
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
+
+    prevButton?.addEventListener('click', () => updateLightbox(currentIndex - 1));
+    nextButton?.addEventListener('click', () => updateLightbox(currentIndex + 1));
+
+    closeTargets.forEach((btn) => {
+      btn.addEventListener('click', closeLightbox);
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (!galleryLightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
+      if (event.key === 'ArrowRight') updateLightbox(currentIndex + 1);
+    });
+  }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
