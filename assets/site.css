@@ -152,3 +152,4 @@ body.lightbox-open{overflow:hidden}
 \n.lightbox-nav:hover,.lightbox-nav:focus-visible,.lightbox-close:hover,.lightbox-close:focus-visible{opacity:1}\n
 
 
+\n\n/* Lazy render below the fold */\nsection{content-visibility:auto;contain-intrinsic-size:800px}\n

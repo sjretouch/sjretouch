@@ -15,6 +15,12 @@
     requestAnimationFrame(updateHeader);
   }, { passive: true });
   updateHeader();
+  const pageImages = document.querySelectorAll('img');
+  pageImages.forEach((img) => {
+    const isCritical = img.closest('.logo') || img.closest('.hero') || img.classList.contains('footer-logo');
+    if (!img.loading) img.loading = isCritical ? 'eager' : 'lazy';
+    img.decoding = 'async';
+  });
 
   if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
@@ -391,4 +397,5 @@
     });
   }
 });
+
 
